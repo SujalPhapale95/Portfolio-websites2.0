@@ -2766,6 +2766,22 @@ ul {
     width: 95vw;
     margin: 12px;
   }
+
+  .ambient-label {
+    display: none;
+  }
+
+  .ambient-toggle {
+    padding: 6px 9px;
+  }
+
+  .cmd-palette-btn {
+    padding: 6px 9px;
+  }
+
+  .brand-sub {
+    display: none;
+  }
 }
 
 
