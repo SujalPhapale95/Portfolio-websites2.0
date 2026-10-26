@@ -258,8 +258,11 @@
     function resizeHero() {
       const rect = heroCanvas.parentElement.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = heroCanvas.width = Math.floor(rect.width * dpr);
-      height = heroCanvas.height = Math.floor(rect.height * dpr);
+      width = rect.width;
+      height = rect.height;
+      heroCanvas.width = Math.floor(width * dpr);
+      heroCanvas.height = Math.floor(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
     window.addEventListener('resize', resizeHero, { passive: true });
     resizeHero();
@@ -391,12 +394,16 @@
       const transformed = [];
       const projected = [];
 
+      // Dynamic responsive FOV based on viewport aspect ratio
+      const baseDim = Math.min(width, height);
+      const dynamicFov = Math.max(220, Math.min(380, baseDim * 0.9));
+
       for (let i = 0; i < activeGeom.vertices.length; i++) {
         let p = activeGeom.vertices[i];
         p = rotateX(p, rotX);
         p = rotateY(p, rotY);
         transformed.push(p);
-        const proj = project(p, width, height, 380);
+        const proj = project(p, width, height, dynamicFov);
         projected.push(proj);
       }
 
@@ -718,8 +725,11 @@
     function resizeLab() {
       const rect = labCanvas.parentElement.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = labCanvas.width = Math.floor(rect.width * dpr);
-      height = labCanvas.height = Math.floor(rect.height * dpr);
+      width = rect.width;
+      height = rect.height;
+      labCanvas.width = Math.floor(width * dpr);
+      labCanvas.height = Math.floor(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
     window.addEventListener('resize', resizeLab, { passive: true });
     resizeLab();
@@ -793,6 +803,8 @@
       tesseractAngle += 0.015 * labSpeed;
 
       const scale = labScale;
+      const baseLabDim = Math.min(width, height);
+      const labFov = Math.max(200, Math.min(480, baseLabDim * 1.05));
 
       if (labShape === 'hypercube') {
         // 4D Rotation in XW and YZ planes
@@ -817,7 +829,7 @@
 
           p3 = rotateX(p3, labRotX * 0.4);
           p3 = rotateY(p3, labRotY * 0.6);
-          projected3D.push(project(p3, width, height, 480));
+          projected3D.push(project(p3, width, height, labFov));
         }
 
         ctx.strokeStyle = getColorCode(0.85);
@@ -855,7 +867,7 @@
             let p = { x: ix * step, y: y, z: iz * step };
             p = rotateX(p, 0.7);
             p = rotateY(p, labRotY * 0.5);
-            pts.push(project(p, width, height, 440));
+            pts.push(project(p, width, height, labFov * 0.92));
           }
         }
 
@@ -880,7 +892,7 @@
           p = rotateX(p, labRotX);
           p = rotateY(p, labRotY);
           p = rotateZ(p, labRotZ);
-          projected.push(project(p, width, height, 480));
+          projected.push(project(p, width, height, labFov));
         }
 
         ctx.strokeStyle = getColorCode(0.75);

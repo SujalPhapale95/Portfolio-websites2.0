@@ -2716,17 +2716,41 @@ ul {
   contain-intrinsic-size: 0 420px;
 }
 
-/* Micro-responsive enhancements for small mobile (< 480px) */
-@media (max-width: 480px) {
+/* ──────────── PHONE ASPECT RATIO & MOBILE RESPONSIVENESS ──────────── */
+@media (max-width: 768px) {
   .hero-section {
-    padding: calc(var(--header-height) + 24px) 16px 48px;
+    padding: calc(var(--header-height) + 16px) 16px 40px;
+  }
+
+  .hero-container {
+    gap: 22px;
+  }
+
+  .hero-ambient-video {
+    object-position: center 25%;
+  }
+
+  .hero-text-block {
+    gap: 14px;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.85rem, 7.5vw, 2.55rem);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+  }
+
+  .hero-lead {
+    font-size: 14.5px;
+    line-height: 1.55;
   }
 
   .hero-controls {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
     width: 100%;
-    gap: 10px;
+    padding-top: 4px;
   }
 
   .hero-controls .btn,
@@ -2734,14 +2758,54 @@ ul {
     width: 100%;
     justify-content: center;
     text-align: center;
+    padding: 10px 10px;
+    font-size: 11px;
+    white-space: nowrap;
   }
 
-  .hero-headline {
-    font-size: clamp(2.3rem, 10vw, 3.2rem);
+  .hero-telemetry-strip {
+    gap: 12px;
+    padding-top: 12px;
+    margin-top: 6px;
+  }
+
+  .telemetry-val {
+    font-size: 11px;
+  }
+
+  .telemetry-label {
+    font-size: 8.5px;
+  }
+
+  /* Responsive canvas viewports: maintain crisp 16:11 aspect ratio on phones */
+  .canvas-mount-point {
+    height: auto;
+    aspect-ratio: 16 / 11;
+    max-height: 310px;
+    min-height: 220px;
+  }
+
+  .lab-canvas-box {
+    height: auto;
+    aspect-ratio: 16 / 11;
+    max-height: 310px;
+    min-height: 220px;
+  }
+
+  .work-visual {
+    height: auto;
+    aspect-ratio: 16 / 10;
+    max-height: 230px;
+  }
+
+  .gallery-thumb-wrap {
+    height: auto;
+    aspect-ratio: 16 / 10;
+    max-height: 230px;
   }
 
   .section {
-    padding: 56px 16px;
+    padding: 48px 16px;
   }
 
   .section-container {
@@ -2749,22 +2813,89 @@ ul {
   }
 
   .lab-controls-panel {
-    padding: 18px 14px;
+    padding: 16px 14px;
   }
 
   .preset-grid {
     grid-template-columns: 1fr 1fr;
     gap: 8px;
   }
+}
+
+/* Micro-responsive enhancements for small phones (< 480px) */
+@media (max-width: 480px) {
+  .hero-section {
+    padding: calc(var(--header-height) + 12px) 14px 36px;
+  }
+
+  .hero-container {
+    gap: 18px;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+    line-height: 1.04;
+  }
+
+  .hero-lead {
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .hero-controls {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .hero-controls .btn,
+  .hero-controls .btn-copy-email {
+    padding: 9px 6px;
+    font-size: 10.5px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-telemetry-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    justify-content: space-between;
+  }
+
+  .telemetry-divider {
+    display: none;
+  }
+
+  .canvas-mount-point {
+    aspect-ratio: 16 / 11;
+    max-height: 275px;
+    min-height: 200px;
+  }
+
+  .lab-canvas-box {
+    aspect-ratio: 16 / 11;
+    max-height: 275px;
+    min-height: 200px;
+  }
+
+  .preset-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .preset-btn {
+    font-size: 10px;
+    padding: 8px 6px;
+  }
 
   .cs-drawer-content {
-    padding: 20px 16px 36px;
-    gap: 20px;
+    padding: 16px 14px 32px;
+    gap: 16px;
   }
 
   .cmd-palette-modal {
     width: 95vw;
-    margin: 12px;
+    margin: 8px;
+    max-height: 85vh;
   }
 
   .ambient-label {
@@ -2782,6 +2913,11 @@ ul {
   .brand-sub {
     display: none;
   }
+
+  .brand-text {
+    font-size: 13px;
+  }
 }
+
 
 
