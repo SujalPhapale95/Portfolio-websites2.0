@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sujal Phapale — 3D Artist &amp; Software Developer</title>
+  <meta name="description" content="Portfolio of Sujal Phapale: Computer Engineering student, 3D artist, and developer specializing in Blender 3D, full-stack Next.js applications, and AI/RAG systems.">
+  <meta name="theme-color" content="#08080b">
+  
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sujal Phapale — 3D Artist &amp; Software Developer">
+  <meta property="og:description" content="Computer Engineering student, 3D artist, and developer specializing in Blender 3D, full-stack Next.js, and AI/RAG architectures.">
+  <meta property="og:image" content="assets/blender/Skullfinal.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sujal Phapale — 3D Artist &amp; Software Developer">
+  <meta name="twitter:description" content="Computer Engineering student, 3D artist, and developer specializing in Blender 3D, full-stack Next.js, and AI/RAG architectures.">
+  <meta name="twitter:image" content="assets/blender/Skullfinal.png">
+
+  <!-- Minimalist SVG Monogram Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2308080b'/><rect x='2' y='2' width='28' height='28' rx='4' fill='none' stroke='%2322222a' stroke-width='1.5'/><text x='16' y='21' font-family='monospace' font-weight='700' font-size='13' fill='%23c8ff00' text-anchor='middle'>SP</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-dark">
+  <!-- Subtle architectural background grid & grain -->
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
+  <div class="bg-noise-overlay" aria-hidden="true"></div>
+
+  <!-- ════════════════ TOP MASTHEAD / NAVBAR ════════════════ -->
+  <header class="masthead" id="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-brand">
+        <a href="#hero" class="brand-link">
+          <span class="brand-monogram">SP</span>
+          <div class="brand-text-col">
+            <span class="brand-name">SUJAL PHAPALE</span>
+            <span class="brand-tag">// DEV &bull; 3D ARTIST</span>
+          </div>
+          <span class="status-indicator-dot" title="Available for select roles & commissions"></span>
+        </a>
+      </div>
+
+      <nav class="masthead-nav" id="masthead-nav">
+        <ul class="nav-menu">
+          <li><a href="#lab" class="nav-item"><span class="nav-idx">01</span>3D Lab</a></li>
+          <li><a href="#works" class="nav-item"><span class="nav-idx">02</span>Projects</a></li>
+          <li><a href="#blender-gallery" class="nav-item"><span class="nav-idx">03</span>3D Art</a></li>
+          <li><a href="#capabilities" class="nav-item"><span class="nav-idx">04</span>Skills</a></li>
+          <li><a href="#philosophy" class="nav-item"><span class="nav-idx">05</span>About</a></li>
+          <li><a href="#contact" class="nav-item"><span class="nav-idx">06</span>Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="masthead-actions">
+        <!-- Command Palette Trigger -->
+        <button class="cmd-trigger-btn" id="cmd-trigger-btn" aria-label="Open command palette (Ctrl+K)" title="Command Palette (Ctrl + K)">
+          <span class="cmd-key-symbol">&#8984;</span><span class="cmd-key-letter">K</span>
+        </button>
+
+        <!-- Ambient Hero Video Toggle -->
+        <button class="ambient-toggle active" id="ambient-toggle" aria-label="Toggle ambient video backdrop" title="Toggle ambient 3D video background">
+          <span class="ambient-indicator"></span>
+          <span class="ambient-label">AMBIENT: ON</span>
+        </button>
+
+        <!-- Interactive Audio Synthesizer Toggle -->
+        <button class="sound-toggle" id="sound-toggle" aria-label="Toggle micro audio effects">
+          <span class="sound-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </span>
+          <span class="sound-label">AUDIO: OFF</span>
+        </button>
+
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ════════════════ HERO SECTION ════════════════ -->
+    <section class="hero-section" id="hero">
+      <!-- Ambient 3D Render Video Backdrop -->
+      <div class="hero-ambient-wrap" id="hero-ambient-wrap">
+        <video class="hero-ambient-video" id="hero-ambient-video" autoplay loop muted playsinline preload="auto" poster="assets/blender/Skullfinal.png">
+          <source src="assets/blender/0001-0500.mkv" type="video/mp4">
+          <source src="assets/blender/0001-0500.mkv" type="video/webm">
+          <source src="assets/blender/0001-0500.mkv" type="video/x-matroska">
+        </video>
+        <div class="hero-ambient-overlay"></div>
+      </div>
+
+      <div class="hero-container">
+        <!-- Left: Text & Manifesto -->
+        <div class="hero-text-block">
+          <div class="hero-meta-strip">
+            <span class="mono-badge">[SUJAL PHAPALE]</span>
+            <span class="meta-sep">/</span>
+            <span class="mono-text">BLENDER 3D &bull; FULL-STACK &bull; AI SYSTEMS</span>
+          </div>
+
+          <h1 class="hero-headline">
+            <span class="headline-row">CREATIVE</span>
+            <span class="headline-row headline-highlight">DEVELOPER</span>
+            <span class="headline-row">&amp; 3D ARTIST</span>
+          </h1>
+
+          <p class="hero-lead">
+            Computer Engineering student and digital creator blending code with 3D design and visual effects.
+            Building high-performance full-stack web applications, AI/RAG systems, and immersive 3D digital art in Blender.
+          </p>
+
+          <div class="hero-controls">
+            <a href="#works" class="btn btn-solid">
+              <span>Explore Projects</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <a href="#lab" class="btn btn-ghost">
+              <span class="pulse-indicator"></span>
+              <span>Launch 3D Lab</span>
+            </a>
+            <button class="btn btn-resume" id="hero-resume-btn" title="View / Download Resume (PDF)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <span>Resume / CV</span>
+            </button>
+            <button class="btn btn-copy-email" id="quick-copy-email" title="Click to copy email address">
+              <span class="copy-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              </span>
+              <span class="email-text">sujal.phapale@gmail.com</span>
+            </button>
+          </div>
+
+          <!-- Hero Telemetry Data -->
+          <div class="hero-telemetry-strip">
+            <div class="telemetry-item">
+              <span class="telemetry-label">DISCIPLINE</span>
+              <span class="telemetry-val">Comp. Engineering &bull; 3D VFX</span>
+            </div>
+            <div class="telemetry-divider"></div>
+            <div class="telemetry-item">
+              <span class="telemetry-label">LOCATION</span>
+              <span class="telemetry-val">India &bull; Worldwide Remote</span>
+            </div>
+            <div class="telemetry-divider"></div>
+            <div class="telemetry-item">
+              <span class="telemetry-label">LOCAL CLOCK</span>
+              <span class="telemetry-val" id="hero-local-clock">--:--:-- UTC</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Real Interactive Dual-Engine Viewport -->
+        <div class="hero-viewport-wrapper">
+          <div class="viewport-card">
+            <!-- Viewport Titlebar & Mode Switcher -->
+            <div class="viewport-header">
+              <div class="viewport-mode-tabs" role="tablist">
+                <button class="viewport-tab active" id="tab-hero-code" data-target="code" role="tab" aria-selected="true">
+                  <span class="tab-dot green"></span>
+                  <span>01 CODE ENGINE</span>
+                </button>
+                <button class="viewport-tab" id="tab-hero-reel" data-target="reel" role="tab" aria-selected="false">
+                  <span class="tab-dot orange"></span>
+                  <span>02 BLENDER REEL</span>
+                </button>
+              </div>
+              <div class="viewport-stats">
+                <span class="hud-tag" id="hero-fps-counter">60.0 FPS</span>
+                <span class="hud-tag" id="hero-vert-counter">1,440 VERTS</span>
+              </div>
+            </div>
+
+            <!-- The Dual-Engine Mount Point (Canvas & Blender Video) -->
+            <div class="canvas-mount-point" id="canvas-container">
+              <canvas id="hero-canvas"></canvas>
+              
+              <!-- Blender 500-Frame Animation Reel Player -->
+              <div class="hero-reel-container" id="hero-reel-container">
+                <video class="hero-reel-video" id="hero-reel-video" loop muted playsinline preload="auto" poster="assets/blender/Skullfinal.png">
+                  <source src="assets/blender/0001-0500.mkv" type="video/mp4">
+                  <source src="assets/blender/0001-0500.mkv" type="video/webm">
+                  <source src="assets/blender/0001-0500.mkv" type="video/x-matroska">
+                </video>
+              </div>
+
+              <div class="viewport-hint" id="viewport-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                <span id="viewport-hint-text">Click &amp; drag to rotate sculpture</span>
+              </div>
+            </div>
+
+            <!-- Viewport Interactive Toolbar (Canvas Controls) -->
+            <div class="viewport-toolbar" id="toolbar-code-group">
+              <div class="toolbar-group">
+                <button class="tool-btn active" data-mode="wireframe" id="tool-wire">WIREFRAME</button>
+                <button class="tool-btn" data-mode="solid" id="tool-solid">SOLID / PBR</button>
+                <button class="tool-btn" data-mode="points" id="tool-points">POINTS</button>
+              </div>
+              <div class="toolbar-group">
+                <button class="tool-btn tool-btn-secondary" id="tool-shape">SHAPE: ICOSAHEDRON</button>
+                <button class="tool-btn tool-btn-secondary" id="tool-reset">RESET VIEW</button>
+              </div>
+            </div>
+
+            <!-- Viewport Reel Controls Toolbar (Video Controls) -->
+            <div class="viewport-toolbar hidden" id="toolbar-reel-group">
+              <div class="toolbar-group">
+                <button class="tool-btn active" id="btn-reel-play">PAUSE ||</button>
+                <button class="tool-btn" id="btn-reel-speed">SPEED: 1.0x</button>
+                <button class="tool-btn" id="btn-reel-restart">RESTART &circlearrowleft;</button>
+              </div>
+              <div class="toolbar-group">
+                <a href="#blender-gallery" class="tool-btn tool-btn-secondary">ALL 3D WORKS &darr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ 3D INTERACTIVE LAB SECTION ════════════════ -->
+    <section class="section lab-section" id="lab">
+      <div class="section-container">
+        <div class="section-header-row">
+          <div>
+            <span class="section-kicker">[01 // INTERACTIVE EXPERIMENT]</span>
+            <h2 class="section-title">The 3D Geometry Lab</h2>
+          </div>
+          <p class="section-summary">
+            Directly test procedural geometry generation and real-time transformations.
+            Rendered natively in 60fps canvas math with zero external library bloat.
+          </p>
+        </div>
+
+        <div class="lab-workspace">
+          <!-- Canvas viewport -->
+          <div class="lab-canvas-box">
+            <canvas id="lab-canvas"></canvas>
+            <div class="lab-overlay-hud">
+              <div class="hud-item">
+                <span class="hud-key">GEOMETRY:</span>
+                <span class="hud-val" id="lab-hud-geom">TORUS_KNOT</span>
+              </div>
+              <div class="hud-item">
+                <span class="hud-key">TESSELLATION:</span>
+                <span class="hud-val" id="lab-hud-poly">1,820 FACES</span>
+              </div>
+              <div class="hud-item">
+                <span class="hud-key">PROJECTION:</span>
+                <span class="hud-val">PERSPECTIVE 75&deg;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls panel -->
+          <div class="lab-controls-panel">
+            <div class="control-header">
+              <span class="mono-label">PARAMETRIC_CONTROLS</span>
+              <span class="badge-accent">REALTIME</span>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Geometry Preset</label>
+              <div class="preset-grid">
+                <button class="preset-btn active" data-shape="torus">Torus Knot</button>
+                <button class="preset-btn" data-shape="icosahedron">Dual Icosahedron</button>
+                <button class="preset-btn" data-shape="hypercube">Hypercube 4D</button>
+                <button class="preset-btn" data-shape="wave">Wave Grid</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="slider-header">
+                <label for="speed-slider" class="control-label">Rotation Velocity</label>
+                <span class="slider-readout" id="speed-val">1.0x</span>
+              </div>
+              <input type="range" id="speed-slider" min="0" max="3" step="0.1" value="1.0" class="tech-slider">
+            </div>
+
+            <div class="control-group">
+              <div class="slider-header">
+                <label for="scale-slider" class="control-label">Scale Factor</label>
+                <span class="slider-readout" id="scale-val">100%</span>
+              </div>
+              <input type="range" id="scale-slider" min="0.5" max="1.5" step="0.05" value="1.0" class="tech-slider">
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Color Grading</label>
+              <div class="color-mode-grid">
+                <button class="color-btn active" data-color="lime"><span class="color-swatch swatch-lime"></span>Acid Lime</button>
+                <button class="color-btn" data-color="mono"><span class="color-swatch swatch-mono"></span>Titanium Mono</button>
+                <button class="color-btn" data-color="solar"><span class="color-swatch swatch-solar"></span>Solar Amber</button>
+              </div>
+            </div>
+
+            <div class="lab-meta-box">
+              <p class="lab-meta-note">
+                <strong>Craft Note:</strong> Real-time 3D transformation matrices calculated per-frame.
+                No stock pre-rendered clips. Every vertex is computed in the browser.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ SELECTED WORKS SECTION ════════════════ -->
+    <section class="section works-section" id="works">
+      <div class="section-container">
+        <div class="section-header-row">
+          <div>
+            <span class="section-kicker">[02 // REAL REPOSITORIES &amp; PROJECTS]</span>
+            <h2 class="section-title">Selected Projects</h2>
+          </div>
+          <!-- Filter Tags -->
+          <div class="works-filter-bar">
+            <button class="filter-tag active" data-filter="all">ALL WORKS [04]</button>
+            <button class="filter-tag" data-filter="web">WEB &amp; FULL-STACK [02]</button>
+            <button class="filter-tag" data-filter="ai-3d">AI &amp; 3D ART [02]</button>
+          </div>
+        </div>
+
+        <div class="works-grid">
+          <!-- Project 01: Future-You -->
+          <article class="work-card" data-category="web" data-study="future-you">
+            <div class="work-header">
+              <div class="work-id">01 // NEXT.JS APPLICATION</div>
+              <button class="btn-case-study" data-study="future-you" title="Open interactive case study">
+                <span>CASE STUDY</span> &rarr;
+              </button>
+            </div>
+            <div class="work-visual">
+              <img src="assets/images/project-webapp.jpg" alt="Future-You Web Application" loading="lazy">
+              <div class="work-hover-scrim" data-study="future-you">
+                <span class="scrim-label">INSPECT CASE STUDY &bull; DEEP DIVE &nearr;</span>
+              </div>
+            </div>
+            <div class="work-body">
+              <div class="work-tags">
+                <span class="tag-pill">NEXT.JS</span>
+                <span class="tag-pill">TYPESCRIPT</span>
+                <span class="tag-pill">SUPABASE</span>
+                <span class="tag-pill">TAILWIND CSS</span>
+                <span class="tag-pill">VERCEL</span>
+              </div>
+              <h3 class="work-title">Future-You: Goal &amp; Future Self Platform</h3>
+              <p class="work-desc">
+                Full-stack Next.js web application built with TypeScript, Supabase, and Tailwind CSS.
+                Designed for goal-setting, future self projection, and automated push notifications via VAPID keys. Deployed live on Vercel.
+              </p>
+              <div class="work-specs">
+                <div class="spec-col">
+                  <span class="spec-k">LIVE DEMO</span>
+                  <a href="https://future-you-virid.vercel.app" target="_blank" rel="noopener" class="spec-v link-accent">future-you-virid.vercel.app &nearr;</a>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-k">SOURCE CODE</span>
+                  <a href="https://github.com/SujalPhapale95/Future-You" target="_blank" rel="noopener" class="spec-v link-accent">GitHub Repo &nearr;</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 02: RAG Document Chatbot -->
+          <article class="work-card" data-category="ai-3d" data-study="rag-chatbot">
+            <div class="work-header">
+              <div class="work-id">02 // AI &amp; LLM ARCHITECTURE</div>
+              <button class="btn-case-study" data-study="rag-chatbot" title="Open interactive case study">
+                <span>CASE STUDY</span> &rarr;
+              </button>
+            </div>
+            <div class="work-visual work-visual-cli">
+              <div class="cli-terminal-mock">
+                <div class="cli-topbar">
+                  <span class="cli-dot red"></span>
+                  <span class="cli-dot yellow"></span>
+                  <span class="cli-dot green"></span>
+                  <span class="cli-title">python rag_chatbot.py --chromadb ./vector_store</span>
+                </div>
+                <div class="cli-output">
+                  <p class="cli-line green">&gt; Initializing Hugging Face Embeddings...</p>
+                  <p class="cli-line">&gt; Loading ChromaDB vector index: 12,400 chunks</p>
+                  <p class="cli-line green">&gt; Groq LLM inference connected [Llama 3 / Mixtral]</p>
+                  <p class="cli-line cyan">&gt; Semantic similarity retrieval: 0.94 score &check;</p>
+                  <p class="cli-line">&gt; Response generated in 240ms via Groq API</p>
+                </div>
+              </div>
+              <div class="work-hover-scrim" data-study="rag-chatbot">
+                <span class="scrim-label">INSPECT CASE STUDY &bull; DEEP DIVE &nearr;</span>
+              </div>
+            </div>
+            <div class="work-body">
+              <div class="work-tags">
+                <span class="tag-pill">PYTHON</span>
+                <span class="tag-pill">LANGCHAIN</span>
+                <span class="tag-pill">CHROMADB</span>
+                <span class="tag-pill">HUGGING FACE</span>
+                <span class="tag-pill">GROQ LLM</span>
+              </div>
+              <h3 class="work-title">RAG Document Intelligence Chatbot</h3>
+              <p class="work-desc">
+                Retrieval-Augmented Generation chatbot built with LangChain, ChromaDB vector database,
+                Hugging Face dense embeddings, and Groq's high-speed LPU inference engine for conversational QA over custom document corpora.
+              </p>
+              <div class="work-specs">
+                <div class="spec-col">
+                  <span class="spec-k">VECTOR PIPELINE</span>
+                  <span class="spec-v">ChromaDB + HF</span>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-k">SOURCE CODE</span>
+                  <a href="https://github.com/SujalPhapale95/RAG-Document-Chatbot" target="_blank" rel="noopener" class="spec-v link-accent">GitHub Repo &nearr;</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 03: Chrome Skulls Lookdev -->
+          <article class="work-card" data-category="ai-3d" data-study="chrome-skulls">
+            <div class="work-header">
+              <div class="work-id">03 // 3D ART &amp; LOOKDEV</div>
+              <button class="btn-case-study" data-study="chrome-skulls" title="Open interactive case study">
+                <span>CASE STUDY</span> &rarr;
+              </button>
+            </div>
+            <div class="work-visual">
+              <img src="assets/blender/Skullfinal.png" alt="Chrome Skulls: Iridescent Lookdev by Sujal Phapale" loading="lazy">
+              <div class="work-hover-scrim" data-study="chrome-skulls">
+                <span class="scrim-label">INSPECT CASE STUDY &bull; LOOKDEV &nearr;</span>
+              </div>
+            </div>
+            <div class="work-body">
+              <div class="work-tags">
+                <span class="tag-pill">BLENDER 4.x</span>
+                <span class="tag-pill">CYCLES ENGINE</span>
+                <span class="tag-pill">CHROME LOOKDEV</span>
+                <span class="tag-pill">ANISOTROPIC</span>
+              </div>
+              <h3 class="work-title">Chrome Skulls: Iridescent Metallic Lookdev</h3>
+              <p class="work-desc">
+                High-fidelity 3D modeling and shader study crafted in Blender. Features quad-topology anatomical skull sculpts,
+                photorealistic iridescent metallic reflections, and cinematic rim lighting against deep obsidian black.
+              </p>
+              <div class="work-specs">
+                <div class="spec-col">
+                  <span class="spec-k">RENDER ENGINE</span>
+                  <span class="spec-v">Blender Cycles</span>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-k">INSTAGRAM ART</span>
+                  <a href="https://www.instagram.com/sujal.phapale/" target="_blank" rel="noopener" class="spec-v link-accent">@sujal.phapale &nearr;</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 04: Interactive 3D Web Canvas Engine -->
+          <article class="work-card" data-category="web" data-study="web-engine">
+            <div class="work-header">
+              <div class="work-id">04 // CREATIVE CODING</div>
+              <button class="btn-case-study" data-study="web-engine" title="Open interactive case study">
+                <span>CASE STUDY</span> &rarr;
+              </button>
+            </div>
+            <!-- Technical Canvas Blueprint graphic -->
+            <div class="work-visual work-visual-canvas">
+              <canvas class="project-preview-canvas" id="canvas-preview-shader"></canvas>
+              <div class="work-hover-scrim" data-study="web-engine">
+                <span class="scrim-label">INSPECT CASE STUDY &bull; ENGINE &nearr;</span>
+              </div>
+            </div>
+            <div class="work-body">
+              <div class="work-tags">
+                <span class="tag-pill">JAVASCRIPT</span>
+                <span class="tag-pill">CANVAS 2D/3D</span>
+                <span class="tag-pill">3D PROJECTIONS</span>
+                <span class="tag-pill">MATH MATRICES</span>
+              </div>
+              <h3 class="work-title">Interactive 3D Web Engine &amp; Geometry Lab</h3>
+              <p class="work-desc">
+                Native mathematical 3D projection engine written with zero external libraries.
+                Computes 3D and 4D transformation matrices, parametric surface equations (Torus Knot, Icosahedron, Hypercube), and renders them in real-time at 60+ FPS.
+              </p>
+              <div class="work-specs">
+                <div class="spec-col">
+                  <span class="spec-k">RENDER LOOP</span>
+                  <span class="spec-v">&lt; 16ms Native Math</span>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-k">GITHUB REPO</span>
+                  <a href="https://github.com/SujalPhapale95" target="_blank" rel="noopener" class="spec-v link-accent">@SujalPhapale95 &nearr;</a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ BLENDER 3D GALLERY & SHOWCASE ════════════════ -->
+    <section class="section blender-gallery-section" id="blender-gallery">
+      <div class="section-container">
+        <div class="section-header-row">
+          <div>
+            <span class="section-kicker">[03 // 3D ARTWORK &amp; ANIMATION]</span>
+            <h2 class="section-title">Blender 3D Showcase</h2>
+          </div>
+          <p class="section-summary">
+            Original 3D renders, hard-surface studies, lighting lookdev, and animations created in Blender.
+            Click any render to inspect in high-resolution lightbox.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Item 1: Chrome Skulls -->
+          <div class="gallery-item" data-media="assets/blender/Skullfinal.png" data-type="image" data-title="Chrome Skulls: Iridescent Lookdev" data-desc="Quad-remeshed human skulls with custom anisotropic chrome material, multi-point cinematic rim lighting, and iridescent specular highlights rendered in Blender Cycles." data-link="assets/blender/Skullfinal.png">
+            <div class="gallery-thumb-wrap">
+              <span class="gallery-badge">CYCLES RENDER</span>
+              <img src="assets/blender/Skullfinal.png" alt="Chrome Skulls by Sujal Phapale" loading="lazy">
+              <div class="gallery-hover-overlay">
+                <span class="gallery-zoom-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                  <span>Inspect High-Res</span>
+                </span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <span class="gallery-meta">BLENDER &bull; LIGHTING &amp; LOOKDEV</span>
+              <h3 class="gallery-title">Chrome Skulls</h3>
+              <p class="gallery-caption">Photorealistic chrome shader study with iridescent reflections and high-poly geometry.</p>
+            </div>
+          </div>
+
+          <!-- Item 2: The Masked Goddess -->
+          <div class="gallery-item" data-media="assets/blender/u4_optimized.jpg" data-type="image" data-title="The Masked Nemesis (8K Ultra Master)" data-desc="Classical marble and dark stone statue draped in flowing robes, adorned with a golden mask and chains against dramatic atmospheric storm clouds. Full 8K master available." data-link="assets/blender/U4.png">
+            <div class="gallery-thumb-wrap">
+              <span class="gallery-badge">8K ULTRA MASTER</span>
+              <img src="assets/blender/u4_optimized.jpg" alt="The Masked Nemesis Statue Render by Sujal Phapale" loading="lazy">
+              <div class="gallery-hover-overlay">
+                <span class="gallery-zoom-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                  <span>Inspect 8K Master</span>
+                </span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <span class="gallery-meta">BLENDER &bull; VOLUMETRIC SCENE</span>
+              <h3 class="gallery-title">The Masked Goddess</h3>
+              <p class="gallery-caption">Mythological statue with gilded ornamental mask and chain details under stormy skies.</p>
+            </div>
+          </div>
+
+          <!-- Item 3: KILLSHOT 2026 Wide -->
+          <div class="gallery-item" data-media="assets/blender/72.png" data-type="image" data-title="KILLSHOT 2026: Cyber-Chrome Visual" data-desc="Futuristic visual album centerpiece featuring extruded 3D chrome typography, holographic CD disc, dark skulls, and barbed cybernetic wireframes." data-link="assets/blender/72.png">
+            <div class="gallery-thumb-wrap">
+              <span class="gallery-badge">CYBERPUNK LOOKDEV</span>
+              <img src="assets/blender/72.png" alt="KILLSHOT 2026 Cyber-Chrome Visual by Sujal Phapale" loading="lazy">
+              <div class="gallery-hover-overlay">
+                <span class="gallery-zoom-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                  <span>Inspect High-Res</span>
+                </span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <span class="gallery-meta">BLENDER &bull; GRAPHIC 3D</span>
+              <h3 class="gallery-title">KILLSHOT 2026: Rave Chrome</h3>
+              <p class="gallery-caption">Y2K cybernetic artwork with extruded chrome typography and floating skull chains.</p>
+            </div>
+          </div>
+
+          <!-- Item 4: Minimalist Desk Lamp -->
+          <div class="gallery-item" data-media="assets/blender/lamp3.png" data-type="image" data-title="Minimalist Desk Lamp: Product Visualization" data-desc="Product design and interior visualization. Clean Scandinavian aesthetic focusing on soft ambient occlusion, warm emission shaders, and modular acoustic panels." data-link="assets/blender/lamp3.png">
+            <div class="gallery-thumb-wrap">
+              <span class="gallery-badge">PRODUCT ARCHVIZ</span>
+              <img src="assets/blender/lamp3.png" alt="Minimalist Desk Lamp 3D Render by Sujal Phapale" loading="lazy">
+              <div class="gallery-hover-overlay">
+                <span class="gallery-zoom-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                  <span>Inspect High-Res</span>
+                </span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <span class="gallery-meta">BLENDER &bull; PRODUCT DESIGN</span>
+              <h3 class="gallery-title">Modern Minimalist Lamp</h3>
+              <p class="gallery-caption">Interior lookdev study balancing soft emission, realistic depth of field, and clean geometry.</p>
+            </div>
+          </div>
+
+          <!-- Item 5: KILLSHOT Monolith Poster -->
+          <div class="gallery-item" data-media="assets/blender/3.png" data-type="image" data-title="KILLSHOT Monolith: Vertical Study" data-desc="Monumental vertical poster composition with weathered granite pedestal, heavy chain rigging, and chrome cyber disc framed by dark skull monoliths." data-link="assets/blender/3.png">
+            <div class="gallery-thumb-wrap">
+              <span class="gallery-badge">POSTER COMPOSITION</span>
+              <img src="assets/blender/3.png" alt="KILLSHOT Monolith Poster by Sujal Phapale" loading="lazy">
+              <div class="gallery-hover-overlay">
+                <span class="gallery-zoom-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                  <span>Inspect High-Res</span>
+                </span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <span class="gallery-meta">BLENDER &bull; 9:16 VERTICAL FORMAT</span>
+              <h3 class="gallery-title">KILLSHOT Monolith</h3>
+              <p class="gallery-caption">Vertical monument composition exploring rough carved stone materials and chain tension.</p>
+            </div>
+          </div>
+
+          <!-- Item 6: Animation Reel -->
+          <div class="gallery-item" data-media="assets/blender/0001-0500.mkv" data-type="video" data-title="Blender 3D Animation Sequence (Frames 0001-0500)" data-desc="500-frame keyframed 3D animation render with dynamic camera tracking, particle simulation, and motion lighting." data-link="assets/blender/0001-0500.mkv">
+            <div class="gallery-thumb-wrap">
+              <span class="gallery-badge">500-FRAME ANIMATION</span>
+              <video src="assets/blender/0001-0500.mkv" muted loop playsinline preload="metadata" poster="assets/blender/Skullfinal.png"></video>
+              <div class="gallery-hover-overlay">
+                <span class="gallery-zoom-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  <span>Play Animation Reel</span>
+                </span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <span class="gallery-meta">BLENDER &bull; KEYFRAME ANIMATION</span>
+              <h3 class="gallery-title">3D Animation Sequence</h3>
+              <p class="gallery-caption">Motion study featuring 500 frames of rendered camera animation and dynamic lighting.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ CAPABILITIES / MATRIX SECTION ════════════════ -->
+    <section class="section capabilities-section" id="capabilities">
+      <div class="section-container">
+        <div class="section-header-row">
+          <div>
+            <span class="section-kicker">[04 // TECHNICAL ARSENAL]</span>
+            <h2 class="section-title">Skills &amp; Capabilities</h2>
+          </div>
+          <p class="section-summary">
+            A versatile blend of Computer Engineering fundamentals, full-stack web development, and 3D visual art in Blender.
+          </p>
+        </div>
+
+        <div class="capabilities-matrix">
+          <!-- Col 1: 3D Art & VFX -->
+          <div class="capability-col">
+            <div class="capability-header">
+              <span class="cap-idx">01</span>
+              <h3 class="cap-title">3D Design &amp; VFX</h3>
+            </div>
+            <p class="cap-desc">Blender 3D modeling, lighting, lookdev, procedural materials, visual effects, and scene composition.</p>
+            <ul class="spec-checklist">
+              <li>Blender 4.x Modeling &amp; Modifiers</li>
+              <li>Cycles &amp; Eevee Spectral Lighting</li>
+              <li>Procedural Shaders &amp; Texturing</li>
+              <li>Hard Surface &amp; Poly Modeling</li>
+              <li>VFX &amp; Visual Storytelling</li>
+            </ul>
+          </div>
+
+          <!-- Col 2: Web & Full-Stack -->
+          <div class="capability-col">
+            <div class="capability-header">
+              <span class="cap-idx">02</span>
+              <h3 class="cap-title">Web &amp; Full-Stack</h3>
+            </div>
+            <p class="cap-desc">Building responsive, modern, high-performance web applications using modern React ecosystems.</p>
+            <ul class="spec-checklist">
+              <li>Next.js &amp; React Architecture</li>
+              <li>TypeScript &amp; JavaScript (ESNext)</li>
+              <li>HTML5, Modern CSS, Tailwind CSS</li>
+              <li>Supabase Database &amp; Auth</li>
+              <li>Node.js &amp; REST APIs</li>
+            </ul>
+          </div>
+
+          <!-- Col 3: AI & Programming -->
+          <div class="capability-col">
+            <div class="capability-header">
+              <span class="cap-idx">03</span>
+              <h3 class="cap-title">AI &amp; Programming</h3>
+            </div>
+            <p class="cap-desc">Computer engineering foundations with practical AI/LLM application development.</p>
+            <ul class="spec-checklist">
+              <li>Python Development</li>
+              <li>LangChain RAG Architecture</li>
+              <li>ChromaDB Vector Embeddings</li>
+              <li>Groq LLM Inference &amp; APIs</li>
+              <li>Java Programming</li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Workflow & Tools -->
+          <div class="capability-col">
+            <div class="capability-header">
+              <span class="cap-idx">04</span>
+              <h3 class="cap-title">Workflow &amp; Deploy</h3>
+            </div>
+            <p class="cap-desc">Clean engineering workflow, version control, UI/UX prototyping, and cloud deployments.</p>
+            <ul class="spec-checklist">
+              <li>Git &amp; GitHub Version Control</li>
+              <li>Figma UI/UX Prototyping</li>
+              <li>Vercel Cloud Deployment</li>
+              <li>VS Code Power Environment</li>
+              <li>Web Audio &amp; Canvas Math</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ PHILOSOPHY / ABOUT SECTION ════════════════ -->
+    <section class="section philosophy-section" id="philosophy">
+      <div class="section-container">
+        <div class="philosophy-layout">
+          <div class="philosophy-quote-side">
+            <span class="section-kicker">[05 // ABOUT SUJAL]</span>
+            <blockquote class="manifesto-quote">
+              &ldquo;Blending art and technology — where code gives structure and 3D design gives soul.&rdquo;
+            </blockquote>
+            <div class="author-tag">
+              <span class="author-name">SUJAL PHAPALE</span>
+              <span class="author-role">COMPUTER ENGINEERING STUDENT &bull; 3D ARTIST &bull; DEVELOPER</span>
+            </div>
+          </div>
+
+          <div class="philosophy-text-side">
+            <div class="manifesto-card">
+              <h3 class="card-lead">Building at the intersection of logic and imagination.</h3>
+              <p>
+                I'm a <strong>Computer Engineering student</strong> based in India who is obsessed with making things.
+                By day, I study systems, write code in Python, TypeScript, and Java, and architect web and AI applications.
+                By night, I open <strong>Blender</strong> to sculpt, texture, and light immersive 3D digital worlds and VFX.
+              </p>
+              <p>
+                Having roots in both computer engineering and digital art allows me to build applications that don't just work reliably,
+                but look visually captivating. I believe the future belongs to creators who understand both the algorithms under the hood
+                and the aesthetics on the screen.
+              </p>
+              <div class="manifesto-tenets">
+                <div class="tenet-item">
+                  <span class="tenet-num">I.</span>
+                  <div>
+                    <h4 class="tenet-title">Curiosity-Driven Engineering</h4>
+                    <p class="tenet-desc">Constantly exploring new frontiers — from Next.js full-stack apps to LangChain RAG pipelines.</p>
+                  </div>
+                </div>
+                <div class="tenet-item">
+                  <span class="tenet-num">II.</span>
+                  <div>
+                    <h4 class="tenet-title">Visual Excellence in 3D</h4>
+                    <p class="tenet-desc">Obsessing over lighting, material textures, and camera angles in Blender for cinematic impact.</p>
+                  </div>
+                </div>
+                <div class="tenet-item">
+                  <span class="tenet-num">III.</span>
+                  <div>
+                    <h4 class="tenet-title">Pragmatic Shipping</h4>
+                    <p class="tenet-desc">Building real, functional projects and deploying them to production for people to use.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ CONTACT SECTION ════════════════ -->
+    <section class="section contact-section" id="contact">
+      <div class="section-container">
+        <div class="contact-card-box">
+          <div class="contact-header-block">
+            <span class="section-kicker">[06 // LET'S CONNECT]</span>
+            <h2 class="contact-headline">Let's build something extraordinary together.</h2>
+            <p class="contact-subtitle">
+              Open for software development roles, 3D design / VFX collaborations, and creative freelance projects.
+            </p>
+          </div>
+
+          <div class="contact-split">
+            <!-- Direct communication -->
+            <div class="contact-direct-info">
+              <div class="direct-email-box">
+                <span class="direct-label">DIRECT INQUIRIES</span>
+                <a href="mailto:sujal.phapale@gmail.com" class="direct-email-link">sujal.phapale@gmail.com</a>
+                <button class="btn btn-copy-small" id="copy-email-bottom">
+                  <span>Copy to Clipboard</span>
+                </button>
+              </div>
+
+              <div class="status-meta-card">
+                <div class="meta-row">
+                  <span class="meta-k">LOCATION:</span>
+                  <span class="meta-v">India (Available Worldwide)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-k">PROFILES:</span>
+                  <span class="meta-v">GitHub &bull; LinkedIn &bull; Instagram</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-k">STATUS:</span>
+                  <span class="meta-v">Open for Opportunities</span>
+                </div>
+              </div>
+
+              <div class="social-links-grid">
+                <a href="https://github.com/SujalPhapale95" target="_blank" rel="noopener" class="social-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/sujal-phapale-545b6a318/" target="_blank" rel="noopener" class="social-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>LinkedIn</span>
+                </a>
+                <a href="https://www.instagram.com/sujal.phapale/" target="_blank" rel="noopener" class="social-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  <span>Instagram</span>
+                </a>
+                <a href="https://github.com/SujalPhapale95?tab=repositories" target="_blank" rel="noopener" class="social-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                  <span>All Repos</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Sleek Form -->
+            <form class="contact-form-modern" id="contact-form">
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="name" class="field-label">YOUR NAME</label>
+                  <input type="text" id="name" name="name" class="field-input" placeholder="e.g. Rahul Sharma" required>
+                </div>
+                <div class="form-field">
+                  <label for="email" class="field-label">YOUR EMAIL</label>
+                  <input type="email" id="email" name="email" class="field-input" placeholder="rahul@company.com" required>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="project-type" class="field-label">TYPE OF INQUIRY</label>
+                <select id="project-type" name="project_type" class="field-select">
+                  <option value="software">Software Engineering / Web App Opportunity</option>
+                  <option value="3dart">3D Design &amp; VFX Collaboration</option>
+                  <option value="ai">AI / RAG Chatbot Development</option>
+                  <option value="general">General Collaboration / Connect</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="message" class="field-label">MESSAGE</label>
+                <textarea id="message" name="message" class="field-textarea" rows="4" placeholder="Tell me about your project, idea, or role..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-submit-modern" id="form-submit-btn">
+                <span>Send Message to Sujal</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <footer class="colophon">
+    <div class="colophon-container">
+      <div class="colophon-left">
+        <span class="mono-label">&copy; 2026 SUJAL PHAPALE. CRAFTED WITH PASSION.</span>
+        <span class="colophon-sub">ENGINEERED WITH NATIVE CANVAS 3D &bull; GITHUB: @SujalPhapale95</span>
+      </div>
+      <div class="colophon-right">
+        <a href="#hero" class="back-top-link">
+          <span>BACK TO TOP</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal for 3D Art & Animation Inspector -->
+  <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-content">
+      <div class="lightbox-header">
+        <h3 class="lightbox-title" id="lightbox-title">Artwork Inspector</h3>
+        <button class="lightbox-close-btn" id="lightbox-close-btn" aria-label="Close inspector">ESC / CLOSE &times;</button>
+      </div>
+      <div class="lightbox-media-box" id="lightbox-media-box">
+        <!-- Injected via JavaScript -->
+      </div>
+      <div class="lightbox-footer">
+        <p class="lightbox-desc" id="lightbox-desc"></p>
+        <a href="#" target="_blank" rel="noopener" class="lightbox-orig-link" id="lightbox-orig-link">View Full Resolution Master Asset &nearr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════ PROJECT DEEP-DIVE CASE STUDY DRAWER ════════════════ -->
+  <div class="case-study-backdrop" id="case-study-drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Project Deep-Dive Case Study">
+    <div class="case-study-drawer-panel">
+      <!-- Drawer Top Bar -->
+      <div class="cs-drawer-header">
+        <div class="cs-header-meta">
+          <span class="cs-badge" id="cs-badge">CASE STUDY // 01</span>
+          <span class="cs-category" id="cs-category">FULL-STACK &bull; NEXT.JS</span>
+        </div>
+        <button class="cs-close-btn" id="cs-close-btn" aria-label="Close Case Study (Esc)">
+          <span>ESC / CLOSE &times;</span>
+        </button>
+      </div>
+
+      <!-- Drawer Content (Injected dynamically) -->
+      <div class="cs-drawer-content" id="cs-content">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════ GLOBAL COMMAND PALETTE (CTRL + K) ════════════════ -->
+  <div class="cmd-palette-backdrop" id="cmd-palette" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Command Palette">
+    <div class="cmd-palette-modal">
+      <div class="cmd-palette-search">
+        <svg class="cmd-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="cmd-input" id="cmd-input" placeholder="Type a command or jump to section..." autocomplete="off" spellcheck="false">
+        <kbd class="cmd-esc-badge" id="cmd-close-btn" title="Press Escape to close">ESC</kbd>
+      </div>
+
+      <div class="cmd-palette-results" id="cmd-results">
+        <!-- Injected and filtered dynamically via JavaScript -->
+      </div>
+
+      <div class="cmd-palette-footer">
+        <div class="cmd-keys-hint">
+          <span><kbd>&uarr;</kbd> <kbd>&darr;</kbd> Navigate</span>
+          <span><kbd>&crarr;</kbd> Select</span>
+          <span><kbd>ESC</kbd> Dismiss</span>
+        </div>
+        <span class="cmd-sys-tag">SUJAL.SYS // HUD V2.0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container for Quick Copy -->
+  <div class="toast-notification" id="toast-notify" role="alert" aria-live="polite">
+    <span class="toast-icon">&check;</span>
+    <span class="toast-msg">Email copied to clipboard!</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

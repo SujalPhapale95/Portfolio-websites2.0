@@ -1,0 +1,19 @@
+# System & IDE files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Node / Build artifacts
+node_modules/
+dist/
+build/
+*.log
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local AI agent configs (optional)
+.agents/
