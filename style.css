@@ -495,9 +495,9 @@ ul {
 
 .hero-headline {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 5.8vw, 5.2rem);
+  font-size: clamp(2.2rem, 4.8vw, 4.4rem);
   font-weight: 800;
-  line-height: 0.95;
+  line-height: 0.98;
   letter-spacing: -0.035em;
   color: var(--text-bright);
   text-transform: uppercase;
@@ -2716,14 +2716,14 @@ ul {
   contain-intrinsic-size: 0 420px;
 }
 
-/* ──────────── PHONE ASPECT RATIO & MOBILE RESPONSIVENESS ──────────── */
-@media (max-width: 768px) {
+/* ──────────── PHONE & MOBILE RESPONSIVE TYPOGRAPHY & LAYOUT ──────────── */
+@media (max-width: 860px) {
   .hero-section {
-    padding: calc(var(--header-height) + 16px) 16px 40px;
+    padding: calc(var(--header-height) + 16px) 18px 40px;
   }
 
   .hero-container {
-    gap: 22px;
+    gap: 24px;
   }
 
   .hero-ambient-video {
@@ -2731,11 +2731,11 @@ ul {
   }
 
   .hero-text-block {
-    gap: 14px;
+    gap: 16px;
   }
 
   .hero-headline {
-    font-size: clamp(1.85rem, 7.5vw, 2.55rem);
+    font-size: clamp(1.65rem, 5.2vw, 2.35rem);
     line-height: 1.02;
     letter-spacing: -0.025em;
   }
@@ -2743,41 +2743,18 @@ ul {
   .hero-lead {
     font-size: 14.5px;
     line-height: 1.55;
+    max-width: 100%;
   }
 
-  .hero-controls {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    width: 100%;
-    padding-top: 4px;
+  .section-title {
+    font-size: clamp(1.7rem, 4.2vw, 2.4rem);
   }
 
-  .hero-controls .btn,
-  .hero-controls .btn-copy-email {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-    padding: 10px 10px;
-    font-size: 11px;
-    white-space: nowrap;
+  .contact-headline {
+    font-size: clamp(1.7rem, 4.2vw, 2.3rem);
   }
 
-  .hero-telemetry-strip {
-    gap: 12px;
-    padding-top: 12px;
-    margin-top: 6px;
-  }
-
-  .telemetry-val {
-    font-size: 11px;
-  }
-
-  .telemetry-label {
-    font-size: 8.5px;
-  }
-
-  /* Responsive canvas viewports: maintain crisp 16:11 aspect ratio on phones */
+  /* Responsive canvas viewports */
   .canvas-mount-point {
     height: auto;
     aspect-ratio: 16 / 11;
@@ -2805,7 +2782,7 @@ ul {
   }
 
   .section {
-    padding: 48px 16px;
+    padding: 48px 18px;
   }
 
   .section-container {
@@ -2822,19 +2799,28 @@ ul {
   }
 }
 
-/* Micro-responsive enhancements for small phones (< 480px) */
-@media (max-width: 480px) {
+/* Dedicated Phone Mode (Phones & Phablets <= 600px, e.g. 360px - 540px) */
+@media (max-width: 600px) {
   .hero-section {
-    padding: calc(var(--header-height) + 12px) 14px 36px;
+    padding: calc(var(--header-height) + 12px) 16px 36px;
   }
 
   .hero-container {
     gap: 18px;
   }
 
+  .hero-meta-strip {
+    font-size: 9.5px;
+    letter-spacing: 0.04em;
+    gap: 6px 8px;
+    flex-wrap: wrap;
+    line-height: 1.4;
+  }
+
   .hero-headline {
-    font-size: clamp(1.75rem, 8vw, 2.25rem);
-    line-height: 1.04;
+    font-size: clamp(1.35rem, 6.2vw, 1.85rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
   }
 
   .hero-lead {
@@ -2843,38 +2829,81 @@ ul {
   }
 
   .hero-controls {
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px;
+    gap: 8px;
+    width: 100%;
+    padding-top: 4px;
   }
 
   .hero-controls .btn,
   .hero-controls .btn-copy-email {
-    padding: 9px 6px;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 6px;
     font-size: 10.5px;
     letter-spacing: 0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .hero-telemetry-strip {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 16px;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 14px;
+    padding-top: 12px;
+    margin-top: 6px;
+  }
+
+  .telemetry-item:nth-child(5) {
+    grid-column: span 2;
   }
 
   .telemetry-divider {
     display: none;
   }
 
+  .telemetry-label {
+    font-size: 8px;
+  }
+
+  .telemetry-val {
+    font-size: 10.5px;
+  }
+
   .canvas-mount-point {
     aspect-ratio: 16 / 11;
-    max-height: 275px;
-    min-height: 200px;
+    max-height: 280px;
+    min-height: 210px;
   }
 
   .lab-canvas-box {
     aspect-ratio: 16 / 11;
-    max-height: 275px;
-    min-height: 200px;
+    max-height: 280px;
+    min-height: 210px;
+  }
+
+  .section-kicker {
+    font-size: 10px;
+  }
+
+  .section-title {
+    font-size: clamp(1.4rem, 5vw, 1.95rem);
+  }
+
+  .section-summary {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .contact-headline {
+    font-size: clamp(1.4rem, 5.2vw, 1.95rem);
+  }
+
+  .contact-card-box {
+    padding: 24px 16px;
   }
 
   .preset-grid {
@@ -2890,6 +2919,14 @@ ul {
   .cs-drawer-content {
     padding: 16px 14px 32px;
     gap: 16px;
+  }
+
+  .cs-title {
+    font-size: clamp(1.25rem, 5vw, 1.7rem);
+  }
+
+  .cs-description {
+    font-size: 13.5px;
   }
 
   .cmd-palette-modal {
@@ -2918,6 +2955,34 @@ ul {
     font-size: 13px;
   }
 }
+
+/* Extra-compact phones (<= 380px) */
+@media (max-width: 380px) {
+  .hero-headline {
+    font-size: clamp(1.2rem, 6.5vw, 1.55rem);
+  }
+
+  .hero-controls {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .hero-controls .btn,
+  .hero-controls .btn-copy-email {
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+
+  .hero-telemetry-strip {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .telemetry-item:nth-child(5) {
+    grid-column: span 1;
+  }
+}
+
 
 
 
