@@ -13,6 +13,16 @@
 (function () {
   'use strict';
 
+  // ──────────── GLOBAL SHARED ENGINE STATE ────────────
+  let heroMode = 'code'; // 'code' | 'reel'
+  let heroInView = true;
+  let heroLoopRunning = false;
+  let renderHero = null;
+
+  let shaderInView = false;
+  let shaderLoopRunning = false;
+  let renderShaderSim = null;
+
   // ──────────── AUDIO SYNTHESIZER ENGINE ────────────
   let audioCtx = null;
   let audioEnabled = false;
@@ -247,10 +257,11 @@
 
     function resizeHero() {
       const rect = heroCanvas.parentElement.getBoundingClientRect();
-      width = heroCanvas.width = rect.width * (window.devicePixelRatio || 1);
-      height = heroCanvas.height = rect.height * (window.devicePixelRatio || 1);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = heroCanvas.width = Math.floor(rect.width * dpr);
+      height = heroCanvas.height = Math.floor(rect.height * dpr);
     }
-    window.addEventListener('resize', resizeHero);
+    window.addEventListener('resize', resizeHero, { passive: true });
     resizeHero();
 
     // Mouse Controls
@@ -343,10 +354,8 @@
     let frameCount = 0;
     const fpsCounter = document.getElementById('hero-fps-counter');
     const vertCounter = document.getElementById('hero-vert-counter');
-    let heroInView = true;
-    let heroLoopRunning = false;
 
-    function renderHero() {
+    renderHero = function () {
       if (!heroInView || document.hidden || heroMode === 'reel') {
         heroLoopRunning = false;
         return;
@@ -497,7 +506,11 @@
         }
       }
 
-      requestAnimationFrame(renderHero);
+      if (heroInView && !document.hidden && heroMode === 'code') {
+        requestAnimationFrame(renderHero);
+      } else {
+        heroLoopRunning = false;
+      }
     }
     requestAnimationFrame(renderHero);
   }
@@ -551,7 +564,7 @@
   const reelFrameCounter = document.getElementById('reel-frame-counter');
   const heroFpsTag = document.getElementById('hero-fps-counter');
   const heroVertTag = document.getElementById('hero-vert-counter');
-  let heroMode = 'code'; // 'code' | 'reel'
+  heroMode = 'code'; // 'code' | 'reel'
 
   function setHeroViewportMode(mode) {
     heroMode = mode;
@@ -704,10 +717,11 @@
 
     function resizeLab() {
       const rect = labCanvas.parentElement.getBoundingClientRect();
-      width = labCanvas.width = rect.width * (window.devicePixelRatio || 1);
-      height = labCanvas.height = rect.height * (window.devicePixelRatio || 1);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = labCanvas.width = Math.floor(rect.width * dpr);
+      height = labCanvas.height = Math.floor(rect.height * dpr);
     }
-    window.addEventListener('resize', resizeLab);
+    window.addEventListener('resize', resizeLab, { passive: true });
     resizeLab();
 
     // Lab Controls binding
@@ -917,7 +931,13 @@
     resizeShader();
 
     let shaderTime = 0;
-    function renderShaderSim() {
+
+    renderShaderSim = function () {
+      if (!shaderInView || document.hidden) {
+        shaderLoopRunning = false;
+        return;
+      }
+      shaderLoopRunning = true;
       shaderTime += 0.03;
       sctx.fillStyle = '#06060a';
       sctx.fillRect(0, 0, sw, sh);
@@ -959,7 +979,6 @@
 
       requestAnimationFrame(renderShaderSim);
     }
-    requestAnimationFrame(renderShaderSim);
 
     const shaderObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -1072,12 +1091,13 @@
     });
   });
 
-  // ──────────── ACTIVE NAVBAR SCROLL TRACKING ────────────
+  // ──────────── ACTIVE NAVBAR SCROLL TRACKING (THROTTLED VIA RAF) ────────────
   const masthead = document.getElementById('masthead');
   const navItems = document.querySelectorAll('.nav-item');
   const sections = document.querySelectorAll('section[id]');
+  let scrollTicking = false;
 
-  function onScroll() {
+  function updateScrollState() {
     const scrollY = window.scrollY;
 
     // Header border style
@@ -1088,27 +1108,36 @@
 
     // Active link highlighting
     let currentId = 'hero';
-    sections.forEach(function (sec) {
+    for (let i = 0; i < sections.length; i++) {
+      const sec = sections[i];
       const top = sec.offsetTop - 140;
       const height = sec.offsetHeight;
       if (scrollY >= top && scrollY < top + height) {
         currentId = sec.getAttribute('id');
       }
-    });
+    }
 
     if ((window.innerHeight + Math.round(scrollY)) >= document.body.offsetHeight - 60) {
       currentId = 'contact';
     }
 
     navItems.forEach(function (item) {
-      item.classList.remove('active');
       if (item.getAttribute('href') === '#' + currentId) {
         item.classList.add('active');
+      } else {
+        item.classList.remove('active');
       }
     });
+    scrollTicking = false;
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+
+  window.addEventListener('scroll', function () {
+    if (!scrollTicking) {
+      scrollTicking = true;
+      requestAnimationFrame(updateScrollState);
+    }
+  }, { passive: true });
+  updateScrollState();
 
   // ──────────── MOBILE MENU TOGGLE ────────────
   const mobileToggle = document.getElementById('mobile-toggle');

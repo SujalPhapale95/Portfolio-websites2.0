@@ -404,6 +404,7 @@ ul {
 .hero-section {
   position: relative;
   min-height: calc(100vh - var(--header-height));
+  min-height: calc(100dvh - var(--header-height));
   display: flex;
   align-items: center;
   padding: calc(var(--header-height) + 48px) 24px 72px;
@@ -2694,6 +2695,76 @@ ul {
   }
   .cs-stats-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ──────────── PERFORMANCE & TOUCH OPTIMIZATIONS ──────────── */
+#canvas-container,
+.lab-canvas-box {
+  touch-action: pan-y;
+}
+
+#hero-canvas,
+#lab-canvas {
+  touch-action: none;
+}
+
+/* Rendering containment for off-screen cards */
+.work-card,
+.gallery-item {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 420px;
+}
+
+/* Micro-responsive enhancements for small mobile (< 480px) */
+@media (max-width: 480px) {
+  .hero-section {
+    padding: calc(var(--header-height) + 24px) 16px 48px;
+  }
+
+  .hero-controls {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .hero-controls .btn,
+  .hero-controls .btn-copy-email {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.3rem, 10vw, 3.2rem);
+  }
+
+  .section {
+    padding: 56px 16px;
+  }
+
+  .section-container {
+    padding: 0;
+  }
+
+  .lab-controls-panel {
+    padding: 18px 14px;
+  }
+
+  .preset-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .cs-drawer-content {
+    padding: 20px 16px 36px;
+    gap: 20px;
+  }
+
+  .cmd-palette-modal {
+    width: 95vw;
+    margin: 12px;
   }
 }
 
