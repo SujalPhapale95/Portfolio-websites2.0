@@ -62,6 +62,8 @@ html {
   scroll-padding-top: calc(var(--header-height) + 24px);
   color-scheme: dark;
   background-color: var(--bg-primary);
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* ──────────── CUSTOM OBSIDIAN SCROLLBAR ──────────── */
@@ -1648,42 +1650,54 @@ ul {
   border: 1px solid var(--border-strong);
   border-radius: 8px;
   padding: 48px 36px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
   .contact-card-box {
-    padding: 28px 18px;
+    padding: 24px 16px;
   }
 }
 
 .contact-header-block {
-  margin-bottom: 36px;
+  margin-bottom: 32px;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .contact-headline {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-size: clamp(1.8rem, 3.8vw, 3rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--text-bright);
   line-height: 1.1;
   margin-bottom: 8px;
+  word-break: break-word;
 }
 
 .contact-subtitle {
-  font-size: 15px;
+  font-size: 14.5px;
   color: var(--text-secondary);
+  line-height: 1.55;
+  word-break: break-word;
 }
 
 .contact-split {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 36px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 @media (min-width: 992px) {
   .contact-split {
-    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
     gap: 56px;
   }
 }
@@ -1691,17 +1705,25 @@ ul {
 .contact-direct-info {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .direct-email-box {
   background: #08080b;
   border: 1px solid var(--border-subtle);
   border-radius: 6px;
-  padding: 20px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .direct-label {
@@ -1713,10 +1735,11 @@ ul {
 
 .direct-email-link {
   font-family: var(--font-mono);
-  font-size: 18px;
+  font-size: clamp(13px, 3.6vw, 18px);
   font-weight: 700;
   color: var(--accent-lime);
   word-break: break-all;
+  overflow-wrap: anywhere;
   transition: opacity var(--trans-fast);
 }
 
@@ -1745,41 +1768,68 @@ ul {
 .status-meta-card {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   padding: 16px;
   border: 1px solid var(--border-subtle);
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.01);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .meta-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
+  gap: 8px 12px;
   font-family: var(--font-mono);
   font-size: 11px;
+  min-width: 0;
+  flex-wrap: wrap;
 }
 
 .meta-k {
   color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .meta-v {
   color: var(--text-secondary);
   font-weight: 600;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+@media (max-width: 540px) {
+  .meta-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .meta-v {
+    text-align: left;
+    font-size: 11.5px;
+  }
 }
 
 .social-links-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .social-btn {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
+  gap: 8px;
+  padding: 11px 12px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border-subtle);
   border-radius: 4px;
@@ -1787,6 +1837,15 @@ ul {
   font-size: 11px;
   color: var(--text-secondary);
   transition: all var(--trans-fast);
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.social-btn span {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .social-btn:hover {
@@ -1800,17 +1859,24 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .form-row {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 @media (min-width: 600px) {
   .form-row {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1818,6 +1884,10 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .field-label {
@@ -1825,9 +1895,16 @@ ul {
   font-size: 10px;
   letter-spacing: 0.06em;
   color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .field-input, .field-select, .field-textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   background: #08080b;
   border: 1px solid var(--border-strong);
   border-radius: 4px;
@@ -1840,12 +1917,26 @@ ul {
 
 .field-select {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11.5px;
   cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.field-select option {
+  background: #0d0d12;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 13px;
 }
 
 .field-textarea {
   resize: vertical;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .field-input:focus, .field-select:focus, .field-textarea:focus {
@@ -1868,6 +1959,9 @@ ul {
   justify-content: center;
   gap: 8px;
   transition: all var(--trans-fast);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .btn-submit-modern:hover {
@@ -2903,7 +2997,41 @@ ul {
   }
 
   .contact-card-box {
-    padding: 24px 16px;
+    padding: 20px 14px;
+    border-radius: 6px;
+  }
+
+  .direct-email-box {
+    padding: 16px 14px;
+  }
+
+  .status-meta-card {
+    padding: 14px 12px;
+  }
+
+  .social-links-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .social-btn {
+    padding: 10px 8px;
+    font-size: 10.5px;
+    gap: 6px;
+  }
+
+  .colophon {
+    padding: 24px 14px;
+  }
+
+  .colophon-container {
+    align-items: flex-start;
+    text-align: left;
+    gap: 12px;
+  }
+
+  .colophon-left {
+    align-items: flex-start;
   }
 
   .preset-grid {
