@@ -1070,14 +1070,14 @@
   const quickCopy = document.getElementById('quick-copy-email');
   if (quickCopy) {
     quickCopy.addEventListener('click', function () {
-      copyTextToClipboard('sujal.phapale@gmail.com', 'Copied: sujal.phapale@gmail.com');
+      copyTextToClipboard('sujalphapale95@gmail.com', 'Copied: sujalphapale95@gmail.com');
     });
   }
 
   const copyBottom = document.getElementById('copy-email-bottom');
   if (copyBottom) {
     copyBottom.addEventListener('click', function () {
-      copyTextToClipboard('sujal.phapale@gmail.com', 'Copied: sujal.phapale@gmail.com');
+      copyTextToClipboard('sujalphapale95@gmail.com', 'Copied: sujalphapale95@gmail.com');
     });
   }
 
@@ -1536,8 +1536,8 @@
 
   // Handle Resume Action
   function handleResumeDownload() {
-    showToast('Resume dispatch ready. Contact: sujal.phapale@gmail.com');
-    copyTextToClipboard('sujal.phapale@gmail.com', 'Resume requested: sujal.phapale@gmail.com copied');
+    showToast('Resume dispatch ready. Contact: sujalphapale95@gmail.com');
+    copyTextToClipboard('sujalphapale95@gmail.com', 'Resume requested: sujalphapale95@gmail.com copied');
     playMicroClick(1050, 0.03, 0.05);
   }
 
@@ -1575,7 +1575,7 @@
     { id: 'cs-skulls', title: 'Case Study: Chrome Skulls Lookdev', group: 'Case Studies', icon: '✦', badge: 'Blender', action: function () { openCaseStudy('chrome-skulls'); } },
     { id: 'cs-engine', title: 'Case Study: 3D Math Web Engine', group: 'Case Studies', icon: '✦', badge: 'Graphics', action: function () { openCaseStudy('web-engine'); } },
     { id: 'act-resume', title: 'Download / View Resume (PDF)', group: 'Actions', icon: '📄', badge: 'Resume', action: handleResumeDownload },
-    { id: 'act-copy-email', title: 'Copy Email Address', group: 'Actions', icon: '📋', badge: 'Clipboard', action: function () { copyTextToClipboard('sujal.phapale@gmail.com', 'Copied: sujal.phapale@gmail.com'); } },
+    { id: 'act-copy-email', title: 'Copy Email Address', group: 'Actions', icon: '📋', badge: 'Clipboard', action: function () { copyTextToClipboard('sujalphapale95@gmail.com', 'Copied: sujalphapale95@gmail.com'); } },
     { id: 'act-ambient', title: 'Toggle Ambient Hero Video', group: 'Actions', icon: '🎬', badge: 'Backdrop', action: function () { toggleAmbientVideo(); } },
     { id: 'act-sound', title: 'Toggle Synthesizer Sound FX', group: 'Actions', icon: '🔊', badge: 'Web Audio', action: function () {
       if (soundToggle) soundToggle.click();

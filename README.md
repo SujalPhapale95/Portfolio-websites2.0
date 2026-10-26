@@ -137,7 +137,7 @@ npx serve .
 **Sujal Phapale** — *3D Artist & Software Developer*
 
 - 🌐 **GitHub**: [@SujalPhapale95](https://github.com/SujalPhapale95)
-- ✉️ **Email**: [sujal.phapale@gmail.com](mailto:sujal.phapale@gmail.com)
+- ✉️ **Email**: [sujalphapale95@gmail.com](mailto:sujalphapale95@gmail.com)
 
 ---
 
