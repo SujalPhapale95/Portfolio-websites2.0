@@ -1599,14 +1599,24 @@
 
   // Handle Resume Action
   function handleResumeDownload() {
-    showToast('Resume dispatch ready. Contact: sujalphapale95@gmail.com');
-    copyTextToClipboard('sujalphapale95@gmail.com', 'Resume requested: sujalphapale95@gmail.com copied');
+    showToast('📄 Downloading Sujal Phapale\'s Resume (PDF)...');
     playMicroClick(1050, 0.03, 0.05);
+    const link = document.createElement('a');
+    link.href = 'assets/docs/Sujal_Phapale_Resume.pdf';
+    link.download = 'Sujal_Phapale_Resume.pdf';
+    link.target = '_blank';
+    link.rel = 'noopener';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 
   const heroResumeBtn = document.getElementById('hero-resume-btn');
   if (heroResumeBtn) {
-    heroResumeBtn.addEventListener('click', handleResumeDownload);
+    heroResumeBtn.addEventListener('click', function () {
+      showToast('📄 Downloading Sujal Phapale\'s Resume (PDF)...');
+      playMicroClick(1050, 0.03, 0.05);
+    });
   }
 
   // ──────────── GLOBAL COMMAND PALETTE ENGINE (CTRL + K) ────────────
@@ -1636,8 +1646,8 @@
     { id: 'cs-future-you', title: 'Case Study: Future-You Web App', group: 'Case Studies', icon: '✦', badge: 'Next.js', action: function () { openCaseStudy('future-you'); } },
     { id: 'cs-rag', title: 'Case Study: RAG Document Chatbot', group: 'Case Studies', icon: '✦', badge: 'AI/LLM', action: function () { openCaseStudy('rag-chatbot'); } },
     { id: 'cs-skulls', title: 'Case Study: Chrome Skulls Lookdev', group: 'Case Studies', icon: '✦', badge: 'Blender', action: function () { openCaseStudy('chrome-skulls'); } },
-    { id: 'cs-engine', title: 'Case Study: 3D Math Web Engine', group: 'Case Studies', icon: '✦', badge: 'Graphics', action: function () { openCaseStudy('web-engine'); } },
-    { id: 'act-resume', title: 'Download / View Resume (PDF)', group: 'Actions', icon: '📄', badge: 'Resume', action: handleResumeDownload },
+    { id: 'cs-crimerate', title: 'Case Study: CrimeRate AI Platform', group: 'Case Studies', icon: '✦', badge: 'ML/Python', action: function () { openCaseStudy('crime-rate-ai'); } },
+    { id: 'act-resume', title: 'Download Sujal Phapale\'s Resume (PDF)', group: 'Actions', icon: '📄', badge: 'Resume', action: handleResumeDownload },
     { id: 'act-copy-email', title: 'Copy Email Address', group: 'Actions', icon: '📋', badge: 'Clipboard', action: function () { copyTextToClipboard('sujalphapale95@gmail.com', 'Copied: sujalphapale95@gmail.com'); } },
     { id: 'act-ambient', title: 'Toggle Ambient Hero Video', group: 'Actions', icon: '🎬', badge: 'Backdrop', action: function () { toggleAmbientVideo(); } },
     { id: 'act-sound', title: 'Toggle Synthesizer Sound FX', group: 'Actions', icon: '🔊', badge: 'Web Audio', action: function () {
