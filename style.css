@@ -365,26 +365,29 @@ ul {
 .status-capsule {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  background: rgba(200, 255, 0, 0.05);
-  border: 1px solid rgba(200, 255, 0, 0.28);
+  gap: 7px;
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 9999px;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.06em;
-  font-weight: 700;
-  color: var(--accent-lime);
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+  color: var(--text-secondary);
   text-decoration: none;
   white-space: nowrap;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   transition: all var(--trans-fast);
-  margin-right: 4px;
+  margin-right: 2px;
 }
 
 .status-capsule:hover {
-  background: rgba(200, 255, 0, 0.12);
-  border-color: var(--accent-lime);
-  box-shadow: 0 0 16px rgba(200, 255, 0, 0.28);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
   transform: translateY(-1px);
 }
 
@@ -392,10 +395,23 @@ ul {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--accent-lime);
-  box-shadow: 0 0 8px var(--accent-lime);
-  animation: pulse-dot 2.2s infinite ease-in-out;
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
+  animation: pulse-emerald 2.4s infinite ease-in-out;
   flex-shrink: 0;
+}
+
+@keyframes pulse-emerald {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.9);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+  }
 }
 
 .cmd-trigger-btn {
