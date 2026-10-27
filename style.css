@@ -208,8 +208,8 @@ ul {
 
 .brand-logo-wrap {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 54px;
+  height: 54px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -223,15 +223,15 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: visible;
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 12px rgba(200, 255, 0, 0.12));
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(200, 255, 0, 0.15));
   transition: transform var(--trans-fast), filter var(--trans-fast);
 }
 
 .brand-link:hover .metallic-paint-container {
   transform: scale(1.08);
-  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 18px rgba(200, 255, 0, 0.28));
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 24px rgba(200, 255, 0, 0.35));
 }
 
 .metallic-paint-canvas {
@@ -2103,6 +2103,11 @@ ul {
 
 /* ──────────── RESPONSIVE MOBILE MENU ──────────── */
 @media (max-width: 860px) {
+  .brand-logo-wrap {
+    width: 44px;
+    height: 44px;
+  }
+
   .mobile-toggle {
     display: flex;
   }
