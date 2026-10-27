@@ -12,6 +12,13 @@
 
 ---
 
+<div align="center">
+  <img src="assets/images/portfolio-preview.webp" alt="Sujal Phapale Portfolio v2.0 - 3D Engine & Interactive Viewport Preview" width="100%">
+  <p><em>Live 3D Torus Knot Engine • Blender Cycles X Animation Player • Real-Time WebGL/Canvas Math</em></p>
+</div>
+
+---
+
 ## 🌌 Overview
 
 **Portfolio v2.0** is an interactive, dark-mode personal website designed and engineered from the ground up for **Sujal Phapale**—a hybrid **3D CGI Artist** and **Full-Stack Software Developer**.
@@ -24,26 +31,27 @@ Unlike typical portfolio templates overloaded with heavy, slow framework depende
 
 ### 🎬 1. Cinematic Blender 3D Hero
 - Custom high-fidelity 3D background animation authored in **Blender Cycles X**.
-- Integrated interactive player controls (`[PLAY / PAUSE]`, `[MUTE / UNMUTE]`, `[AMBIENT VIEW]`).
-- Live system status HUD tracking viewport frame rates, audio engine state, and render pipeline status.
+- Dual-Engine Viewport: Toggle between **01 CODE ENGINE** (interactive 3D mathematical sculpture) and **02 BLENDER REEL** (500-frame animation video).
+- Integrated interactive player controls (`[PLAY / PAUSE]`, `[SPEED]`, `[SHAPE: TORUS KNOT / ICOSAHEDRON]`).
+- Instant **Resume / CV PDF download** directly from hero actions.
 
 ### 📐 2. Real-Time 3D Mathematical Canvas Engine (`#lab`)
 - **Zero-Dependency 3D/4D Projection Engine**: Computes 3D-to-2D perspective projection matrices in pure vanilla JavaScript.
+- **Default 3D Wave Grid Lattice**: Dynamic procedural harmonic wave plane with animated wireframe lattice lines and vertex nodes.
 - **Parametric Mathematical Surfaces**:
-  - 🌀 **Torus Knot** (P: 2, Q: 3 complex harmonic curve)
-  - 🧪 **Klein Bottle** (Non-orientable 4D manifold)
+  - 🌊 **Wave Grid** (Harmonic undulating coordinate mesh)
+  - 🌀 **Torus Knot** (P: 3, Q: 4 complex harmonic knot)
   - 🧊 **Hypercube / Tesseract** (4D rotation projected to 3D wireframe)
-  - ♾️ **Möbius Strip** (Continuous single-boundary surface)
-  - 🍩 **Supertorus** (Non-linear trigonometric power deformation)
+  - 💎 **Dual Icosahedron** (Concentric geometric nested dual lattices)
 - **Interactive Viewport Controls**: Real-time mouse orbit rotation, resolution slider, rotation speed throttle, and Wireframe vs. Solid render modes.
 
 ### 📂 3. Project Deep-Dive Drawers (`#works`)
 - Sliding Obsidian-glass side-drawer with dark backdrop blur.
 - In-depth architectural case studies for featured engineering and 3D works:
+  - **CrimeRate AI**: Machine Learning crime risk prediction & geospatial analytics platform (Python, Flask, Scikit-learn, Leaflet.js).
   - **Future-You**: Next.js 14 App Router, Supabase PostgreSQL with RLS, Service Worker Web Push (VAPID API) architecture, Edge scheduled background nudges.
-  - **RAG Document Chatbot**: LangChain chunking pipeline, ChromaDB vector indexing, Hugging Face BGE embeddings, Groq LPU Llama-3-70B inference engine.
-  - **Chrome Skulls Lookdev**: Blender Cycles X, clean sub-d quad topology, custom anisotropic thin-film Fresnel shader lookdev, 3-point cinematic rim lighting.
-  - **3D Math Web Engine**: Vanilla JS, 3D/4D projection matrix math, parametric surface algorithms, 60 FPS zero-dependency renderer.
+  - **Interactive 3D WebGL Portfolio**: Vanilla JS, 3D/4D projection matrix math, parametric surface algorithms, 60 FPS zero-dependency renderer.
+  - **500-Frame Procedural Animation Engine**: Blender Cycles X, procedural camera rigging, geometry node sweeps, and cinematic lookdev.
 - Direct links to live deployments and code repositories.
 
 ### ⌨️ 4. Global Command Palette (`Ctrl + K` / `⌘K`)
