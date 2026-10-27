@@ -725,7 +725,7 @@
     const ctx = labCanvas.getContext('2d');
     let width = 0, height = 0;
 
-    let labShape = 'torus';
+    let labShape = 'wave';
     let labRotX = 0, labRotY = 0, labRotZ = 0;
     let labSpeed = 1.0;
     let labScale = 1.0;
@@ -767,12 +767,12 @@
         btn.classList.add('active');
         labShape = btn.getAttribute('data-shape');
 
-        if (hudGeom) hudGeom.textContent = labShape.toUpperCase();
+        if (hudGeom) hudGeom.textContent = labShape === 'wave' ? 'WAVE_GRID' : labShape.toUpperCase();
         if (hudPoly) {
           if (labShape === 'torus') hudPoly.textContent = labTorus.faces.length + ' FACES';
           else if (labShape === 'icosahedron') hudPoly.textContent = labIcosa.faces.length + ' FACES';
           else if (labShape === 'hypercube') hudPoly.textContent = '32 EDGES (4D)';
-          else hudPoly.textContent = '400 VERTICES';
+          else hudPoly.textContent = '841 VERTICES';
         }
       });
     });
@@ -894,19 +894,49 @@
         for (let ix = -gridSize; ix <= gridSize; ix++) {
           for (let iz = -gridSize; iz <= gridSize; iz++) {
             const dist = Math.sqrt(ix * ix + iz * iz);
-            const y = Math.sin(dist * 0.4 - time) * 30 * scale;
+            const y = Math.sin(dist * 0.4 - time) * 32 * scale;
             let p = { x: ix * step, y: y, z: iz * step };
-            p = rotateX(p, 0.7);
-            p = rotateY(p, labRotY * 0.5);
-            pts.push(project(p, width, height, labFov * 0.92));
+            p = rotateX(p, 0.72);
+            p = rotateY(p, labRotY * 0.45);
+            pts.push(project(p, width, height, labFov * 0.95));
           }
         }
 
-        ctx.fillStyle = getColorCode(0.75);
+        const dim = gridSize * 2 + 1;
+
+        // Draw connecting 3D wireframe grid lines
+        ctx.strokeStyle = getColorCode(0.32);
+        ctx.lineWidth = 0.9;
+        ctx.beginPath();
+        for (let r = 0; r < dim; r++) {
+          for (let c = 0; c < dim; c++) {
+            const idx = r * dim + c;
+            const pt = pts[idx];
+            if (!pt) continue;
+            if (c + 1 < dim) {
+              const rightPt = pts[idx + 1];
+              if (rightPt) {
+                ctx.moveTo(pt.x, pt.y);
+                ctx.lineTo(rightPt.x, rightPt.y);
+              }
+            }
+            if (r + 1 < dim) {
+              const downPt = pts[idx + dim];
+              if (downPt) {
+                ctx.moveTo(pt.x, pt.y);
+                ctx.lineTo(downPt.x, downPt.y);
+              }
+            }
+          }
+        }
+        ctx.stroke();
+
+        // Draw glowing vertex points
+        ctx.fillStyle = getColorCode(0.85);
         for (let i = 0; i < pts.length; i++) {
           const pt = pts[i];
           if (pt) {
-            ctx.fillRect(pt.x - 1, pt.y - 1, 2.5, 2.5);
+            ctx.fillRect(pt.x - 1.25, pt.y - 1.25, 2.5, 2.5);
           }
         }
       } else {
@@ -1124,8 +1154,8 @@
       const filter = tag.getAttribute('data-filter');
 
       workCards.forEach(function (card) {
-        const cat = card.getAttribute('data-category');
-        if (filter === 'all' || cat === filter) {
+        const cat = card.getAttribute('data-category') || '';
+        if (filter === 'all' || cat.indexOf(filter) !== -1) {
           card.classList.remove('hidden');
         } else {
           card.classList.add('hidden');
@@ -1432,41 +1462,43 @@
         }
       ]
     },
-    'web-engine': {
+    'crime-rate-ai': {
       id: '04',
-      title: 'Interactive 3D Web Canvas Engine & Geometry Lab',
+      title: 'CrimeRate AI: Urban Crime Prediction & Analytics',
       badge: 'CASE STUDY // 04',
-      category: 'CREATIVE CODING • COMPUTER GRAPHICS',
-      summary: 'A lightweight, zero-dependency 3D and 4D mathematical projection engine written in vanilla JavaScript and HTML5 Canvas, executing real-time matrix transformations at a constant 60+ FPS.',
+      category: 'MACHINE LEARNING • PYTHON & FLASK • PREDICTIVE ANALYTICS',
+      summary: 'A smart machine learning web application that predicts and compares crime rates across major Indian metropolitan centers based on year, city, and crime type, factoring in dynamic historical population growth modeling.',
       media: {
         type: 'image',
-        src: 'assets/blender/72.png',
-        alt: 'Interactive 3D Math Engine'
+        src: 'assets/images/project-crimerate-ai.png',
+        alt: 'CrimeRate AI Machine Learning Analytics'
       },
-      liveUrl: '#lab',
-      githubUrl: 'https://github.com/SujalPhapale95',
+      liveUrl: 'https://crimerate-ai.onrender.com/',
+      githubUrl: 'https://github.com/shreyassindhur/CrimeRate-AI',
       stats: [
-        { label: 'LANGUAGE', val: 'Vanilla JavaScript (ES6+)' },
-        { label: 'RENDERER', val: 'HTML5 2D Canvas API' },
-        { label: 'ALGORITHMS', val: '3D/4D Projection Math' },
-        { label: 'PERFORMANCE', val: '60 FPS / < 1% CPU' }
+        { label: 'BACKEND', val: 'Python / Flask' },
+        { label: 'ML ENGINE', val: 'Scikit-learn Regression' },
+        { label: 'DATASET', val: 'NCRB 2014–2021 Corpus' },
+        { label: 'FRONTEND', val: 'TailwindCSS + Chart.js' }
       ],
       sections: [
         {
-          heading: '01 // Why Zero Dependencies?',
-          text: 'While libraries like Three.js are powerful, building a 3D engine from mathematical first principles teaches the true fundamentals of computer graphics: homogenous coordinate pipelines, Euler angle rotations, perspective projection scaling, and viewport clipping.'
+          heading: '01 // Predictive Intelligence & Purpose',
+          text: 'Crime trends fluctuate significantly as urbanization accelerates. CrimeRate AI provides citizens, law enforcement, and researchers with an intuitive interface to query historical crime statistics and forecast future crime rates across key Indian metropolitan areas with multivariate regression analysis.'
         },
         {
-          heading: '02 // The Mathematics of Higher Dimensions',
-          text: 'The engine features parametric generators for 12-vertex Icosahedrons, 4D Tesseracts (Hypercubes rotated across the X-W plane), and continuous (p,q) Torus Knots. Each vertex P(x, y, z) undergoes matrix multiplication before perspective projection mapping: x_screen = x * (fov / (z + distance)) + width/2.'
+          heading: '02 // Dynamic Population Growth Weighting',
+          text: 'Raw crime frequencies without demographic normalization produce distorted risk metrics. The system dynamically adjusts baseline predictions by computing longitudinal population growth curves between census intervals, yielding a standardized crime rate per 100,000 residents.'
         },
         {
-          heading: '03 // Performance & Depth Sorting',
-          text: 'To avoid heavy WebGL context overhead on mobile devices, face-depth painter algorithms and vertex index caching ensure clean wireframe and point-cloud rendering with zero external library overhead and microsecond frame times.'
+          heading: '03 // 4-Tier Risk Categorization & Dual-City Benchmarking',
+          text: 'Beyond raw numerical outputs, predictions are mapped into an actionable 4-tier risk matrix (Very Low, Low, High, Critical) and visualized via Chart.js comparative multi-line charts to benchmark relative safety between any two cities.'
         }
       ]
-    }
+    },
+    'web-engine': null
   };
+  caseStudiesData['web-engine'] = caseStudiesData['crime-rate-ai'];
 
   const csDrawer = document.getElementById('case-study-drawer');
   const csBadge = document.getElementById('cs-badge');

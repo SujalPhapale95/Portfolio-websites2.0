@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrimeRate AI — Cover</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #08090d;
+    --card-bg: rgba(14, 17, 24, 0.85);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-bright: rgba(200, 255, 0, 0.35);
+    --accent: #c8ff00;
+    --accent-glow: rgba(200, 255, 0, 0.18);
+    --cyan: #00e5ff;
+    --red: #ff3366;
+    --orange: #ff9900;
+    --green: #00e676;
+    --text-primary: #f0f2f5;
+    --text-muted: #8a94a6;
+    --font-mono: 'Space Mono', monospace;
+    --font-sans: 'Space Grotesk', -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    position: relative;
+  }
+
+  /* Architectural Grid Background */
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  /* Cyber Glow Orbs */
+  .glow-orb-top {
+    position: absolute;
+    top: -120px;
+    right: 15%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200, 255, 0, 0.09) 0%, rgba(0, 229, 255, 0.03) 45%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .glow-orb-bottom {
+    position: absolute;
+    bottom: -150px;
+    left: -50px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 51, 102, 0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  /* Corner Technical Framing */
+  .frame-corner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-color: var(--border-bright);
+    pointer-events: none;
+    z-index: 10;
+  }
+  .frame-tl { top: 24px; left: 24px; border-top: 2px solid; border-left: 2px solid; }
+  .frame-tr { top: 24px; right: 24px; border-top: 2px solid; border-right: 2px solid; }
+  .frame-bl { bottom: 24px; left: 24px; border-bottom: 2px solid; border-left: 2px solid; }
+  .frame-br { bottom: 24px; right: 24px; border-bottom: 2px solid; border-right: 2px solid; }
+
+  /* Main Container */
+  .container {
+    width: 100%;
+    height: 100%;
+    padding: 48px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Top Masthead */
+  .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .system-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(200, 255, 0, 0.08);
+    border: 1px solid rgba(200, 255, 0, 0.25);
+    text-transform: uppercase;
+  }
+
+  .pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+  }
+
+  .top-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+  }
+
+  /* Center Content Split */
+  .center-split {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 48px;
+    align-items: center;
+    flex: 1;
+    margin: 20px 0;
+  }
+
+  /* Left Hero Text */
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+
+  .title-h1 {
+    font-size: 54px;
+    line-height: 1.06;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+
+  .title-h1 span {
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--text-muted);
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 28px;
+    max-width: 500px;
+  }
+
+  /* Tech Tags Row */
+  .tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag-pill {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 6px;
+    letter-spacing: 0.08em;
+    color: #d1d5db;
+  }
+
+  .tag-pill.highlight {
+    border-color: rgba(200, 255, 0, 0.3);
+    color: var(--accent);
+    background: rgba(200, 255, 0, 0.05);
+  }
+
+  /* Right Dashboard Card */
+  .dashboard-mock {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px);
+  }
+
+  .dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+  }
+
+  .dash-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dash-title::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--cyan);
+    border-radius: 50%;
+  }
+
+  .dash-status {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    background: rgba(200, 255, 0, 0.08);
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.1em;
+  }
+
+  /* Visual Chart Mock */
+  .chart-box {
+    height: 140px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* SVG Trend Lines */
+  .chart-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .chart-grid-line {
+    stroke: rgba(255, 255, 255, 0.05);
+    stroke-dasharray: 3 3;
+    stroke-width: 1;
+  }
+
+  /* City Comparator Pills */
+  .comparator-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .city-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+
+  .city-name {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .city-val {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: var(--font-mono);
+  }
+
+  .city-tier {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    margin-top: 4px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .tier-low {
+    background: rgba(0, 230, 118, 0.15);
+    color: var(--green);
+  }
+
+  .tier-elevated {
+    background: rgba(255, 153, 0, 0.15);
+    color: var(--orange);
+  }
+
+  /* Risk Matrix Strip */
+  .risk-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+  }
+
+  .risk-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+  }
+
+  .risk-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  /* Bottom Telemetry Bar */
+  .bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 18px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .stats-trio {
+    display: flex;
+    gap: 28px;
+  }
+
+  .stat-metric span {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .repo-credit {
+    color: var(--text-primary);
+  }
+</style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="glow-orb-top"></div>
+  <div class="glow-orb-bottom"></div>
+
+  <!-- Decorative Corner Brackets -->
+  <div class="frame-corner frame-tl"></div>
+  <div class="frame-corner frame-tr"></div>
+  <div class="frame-corner frame-bl"></div>
+  <div class="frame-corner frame-br"></div>
+
+  <div class="container">
+    <!-- Top Row -->
+    <div class="top-row">
+      <div class="system-badge">
+        <span class="pulse-dot"></span>
+        <span>PREDICTIVE ML ENGINE • REAL REPOSITORY</span>
+      </div>
+      <div class="top-meta">
+        NCRB 2014–2021 CORPUS // REGRESSION INFERENCE
+      </div>
+    </div>
+
+    <!-- Center Content -->
+    <div class="center-split">
+      <!-- Left: Typography & Story -->
+      <div class="hero-left">
+        <div class="kicker">04 // MACHINE LEARNING &amp; ANALYTICS</div>
+        <h1 class="title-h1">CrimeRate <span>AI</span></h1>
+        <p class="subtitle">
+          Intelligent machine learning application predicting and benchmarking multi-city crime trajectories with dynamic population expansion modeling and interactive 4-tier risk classification.
+        </p>
+
+        <div class="tags-row">
+          <span class="tag-pill highlight">SCIKIT-LEARN</span>
+          <span class="tag-pill highlight">PYTHON FLASK</span>
+          <span class="tag-pill">PANDAS</span>
+          <span class="tag-pill">CHART.JS</span>
+          <span class="tag-pill">TAILWINDCSS</span>
+          <span class="tag-pill">DYNAMIC POPULATION</span>
+        </div>
+      </div>
+
+      <!-- Right: Cyber Analytics Mock Card -->
+      <div class="dashboard-mock">
+        <div class="dash-header">
+          <div class="dash-title">CRIME TREND FORECAST &bull; MULTI-CITY TELEMETRY</div>
+          <div class="dash-status">MODEL LOADED [PICKLE]</div>
+        </div>
+
+        <!-- SVG Line Chart Mock -->
+        <div class="chart-box">
+          <svg class="chart-svg" viewBox="0 0 450 140" preserveAspectRatio="none">
+            <!-- Grid Lines -->
+            <line x1="0" y1="35" x2="450" y2="35" class="chart-grid-line" />
+            <line x1="0" y1="70" x2="450" y2="70" class="chart-grid-line" />
+            <line x1="0" y1="105" x2="450" y2="105" class="chart-grid-line" />
+
+            <!-- City A Gradient & Area (Cyan) -->
+            <defs>
+              <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.25"/>
+                <stop offset="100%" stop-color="#00e5ff" stop-opacity="0.0"/>
+              </linearGradient>
+              <linearGradient id="limeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#c8ff00" stop-opacity="0.22"/>
+                <stop offset="100%" stop-color="#c8ff00" stop-opacity="0.0"/>
+              </linearGradient>
+            </defs>
+
+            <!-- City A Area + Path (Mumbai - Trending Lower) -->
+            <path d="M 0 65 Q 110 50, 225 80 T 450 110 L 450 140 L 0 140 Z" fill="url(#cyanGrad)" />
+            <path d="M 0 65 Q 110 50, 225 80 T 450 110" fill="none" stroke="#00e5ff" stroke-width="2.5" />
+
+            <!-- City B Area + Path (Delhi - Elevated) -->
+            <path d="M 0 100 Q 110 90, 225 55 T 450 28 L 450 140 L 0 140 Z" fill="url(#limeGrad)" />
+            <path d="M 0 100 Q 110 90, 225 55 T 450 28" fill="none" stroke="#c8ff00" stroke-width="2.5" stroke-dasharray="4 2" />
+
+            <!-- Key points -->
+            <circle cx="225" cy="80" r="4" fill="#00e5ff" />
+            <circle cx="450" cy="110" r="4.5" fill="#00e5ff" />
+            <circle cx="225" cy="55" r="4" fill="#c8ff00" />
+            <circle cx="450" cy="28" r="4.5" fill="#c8ff00" />
+          </svg>
+        </div>
+
+        <!-- City Comparison Row -->
+        <div class="comparator-row">
+          <div class="city-card">
+            <div class="city-name">Bengaluru &bull; Projected</div>
+            <div class="city-val">142.4 <span style="font-size: 11px; color: var(--text-muted); font-weight: normal;">/ 100k</span></div>
+            <span class="city-tier tier-low">LOW CRIME INDEX</span>
+          </div>
+          <div class="city-card">
+            <div class="city-name">Comparative Benchmark</div>
+            <div class="city-val" style="color: var(--accent);">318.1 <span style="font-size: 11px; color: var(--text-muted); font-weight: normal;">/ 100k</span></div>
+            <span class="city-tier tier-elevated">ELEVATED TREND</span>
+          </div>
+        </div>
+
+        <!-- Risk Classification Strip -->
+        <div class="risk-strip">
+          <div class="risk-item">
+            <span class="risk-dot" style="background: var(--green);"></span>
+            <span>Very Low</span>
+          </div>
+          <div class="risk-item">
+            <span class="risk-dot" style="background: #ffeb3b;"></span>
+            <span>Low</span>
+          </div>
+          <div class="risk-item">
+            <span class="risk-dot" style="background: var(--orange);"></span>
+            <span>High</span>
+          </div>
+          <div class="risk-item">
+            <span class="risk-dot" style="background: var(--red);"></span>
+            <span>Critical</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="bottom-bar">
+      <div class="stats-trio">
+        <div class="stat-metric">ALGORITHM: <span>MULTIVARIATE REGRESSION</span></div>
+        <div class="stat-metric">POPULATION: <span>DYNAMIC WEIGHTING</span></div>
+        <div class="stat-metric">RESPONSE: <span>&lt; 40MS INFERENCE</span></div>
+      </div>
+      <div class="repo-credit">
+        github.com/shreyassindhur/CrimeRate-AI
+      </div>
+    </div>
+  </div>
+</body>
+</html>

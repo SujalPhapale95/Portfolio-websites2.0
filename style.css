@@ -1734,10 +1734,58 @@ ul {
   }
 }
 
-.contact-header-block {
-  margin-bottom: 32px;
-  max-width: 100%;
-  overflow: hidden;
+.contact-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 28px;
+  margin-bottom: 36px;
+}
+
+.contact-header-row .contact-header-block {
+  margin-bottom: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-logo-chrome-wrap {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform var(--trans-med);
+}
+
+.contact-logo-chrome-wrap .metallic-paint-container {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 20px rgba(200, 255, 0, 0.22));
+  transition: transform var(--trans-fast), filter var(--trans-fast);
+}
+
+.contact-logo-chrome-wrap:hover .metallic-paint-container {
+  transform: scale(1.12);
+  filter: drop-shadow(0 6px 26px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 32px rgba(200, 255, 0, 0.45));
+}
+
+@media (max-width: 680px) {
+  .contact-header-row {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .contact-logo-chrome-wrap {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 .contact-headline {

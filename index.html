@@ -254,11 +254,11 @@
             <div class="lab-overlay-hud">
               <div class="hud-item">
                 <span class="hud-key">GEOMETRY:</span>
-                <span class="hud-val" id="lab-hud-geom">TORUS_KNOT</span>
+                <span class="hud-val" id="lab-hud-geom">WAVE_GRID</span>
               </div>
               <div class="hud-item">
                 <span class="hud-key">TESSELLATION:</span>
-                <span class="hud-val" id="lab-hud-poly">1,820 FACES</span>
+                <span class="hud-val" id="lab-hud-poly">841 VERTICES</span>
               </div>
               <div class="hud-item">
                 <span class="hud-key">PROJECTION:</span>
@@ -277,10 +277,10 @@
             <div class="control-group">
               <label class="control-label">Geometry Preset</label>
               <div class="preset-grid">
-                <button class="preset-btn active" data-shape="torus">Torus Knot</button>
+                <button class="preset-btn" data-shape="torus">Torus Knot</button>
                 <button class="preset-btn" data-shape="icosahedron">Dual Icosahedron</button>
                 <button class="preset-btn" data-shape="hypercube">Hypercube 4D</button>
-                <button class="preset-btn" data-shape="wave">Wave Grid</button>
+                <button class="preset-btn active" data-shape="wave">Wave Grid</button>
               </div>
             </div>
 
@@ -470,41 +470,42 @@
             </div>
           </article>
 
-          <!-- Project 04: Interactive 3D Web Canvas Engine -->
-          <article class="work-card" data-category="web" data-study="web-engine">
+          <!-- Project 04: CrimeRate AI -->
+          <article class="work-card" data-category="ai-3d web" data-study="crime-rate-ai">
             <div class="work-header">
-              <div class="work-id">04 // CREATIVE CODING</div>
-              <button class="btn-case-study" data-study="web-engine" title="Open interactive case study">
+              <div class="work-id">04 // ML &amp; PREDICTIVE ANALYTICS</div>
+              <button class="btn-case-study" data-study="crime-rate-ai" title="Open interactive case study">
                 <span>CASE STUDY</span> &rarr;
               </button>
             </div>
-            <!-- Technical Canvas Blueprint graphic -->
-            <div class="work-visual work-visual-canvas">
-              <canvas class="project-preview-canvas" id="canvas-preview-shader"></canvas>
-              <div class="work-hover-scrim" data-study="web-engine">
-                <span class="scrim-label">INSPECT CASE STUDY &bull; ENGINE &nearr;</span>
+            <div class="work-visual">
+              <img src="assets/images/project-crimerate-ai.png" alt="CrimeRate AI: Urban Crime Prediction &amp; Analytics" loading="lazy" decoding="async">
+              <div class="work-hover-scrim" data-study="crime-rate-ai">
+                <span class="scrim-label">INSPECT CASE STUDY &bull; PREDICTIVE ML &nearr;</span>
               </div>
             </div>
             <div class="work-body">
               <div class="work-tags">
-                <span class="tag-pill">JAVASCRIPT</span>
-                <span class="tag-pill">CANVAS 2D/3D</span>
-                <span class="tag-pill">3D PROJECTIONS</span>
-                <span class="tag-pill">MATH MATRICES</span>
+                <span class="tag-pill">PYTHON</span>
+                <span class="tag-pill">FLASK</span>
+                <span class="tag-pill">SCIKIT-LEARN</span>
+                <span class="tag-pill">PANDAS</span>
+                <span class="tag-pill">CHART.JS</span>
+                <span class="tag-pill">TAILWINDCSS</span>
               </div>
-              <h3 class="work-title">Interactive 3D Web Engine &amp; Geometry Lab</h3>
+              <h3 class="work-title">CrimeRate AI: Predictive Crime Analytics</h3>
               <p class="work-desc">
-                Native mathematical 3D projection engine written with zero external libraries.
-                Computes 3D and 4D transformation matrices, parametric surface equations (Torus Knot, Icosahedron, Hypercube), and renders them in real-time at 60+ FPS.
+                Machine learning web application that predicts and compares crime rates across major Indian metropolitan centers.
+                Features regression modeling adjusted for dynamic population growth, 4-tier risk classification, and interactive Chart.js comparative visualizers.
               </p>
               <div class="work-specs">
                 <div class="spec-col">
-                  <span class="spec-k">RENDER LOOP</span>
-                  <span class="spec-v">&lt; 16ms Native Math</span>
+                  <span class="spec-k">LIVE DEMO</span>
+                  <a href="https://crimerate-ai.onrender.com/" target="_blank" rel="noopener" class="spec-v link-accent">crimerate-ai.onrender.com &nearr;</a>
                 </div>
                 <div class="spec-col">
-                  <span class="spec-k">GITHUB REPO</span>
-                  <a href="https://github.com/SujalPhapale95" target="_blank" rel="noopener" class="spec-v link-accent">@SujalPhapale95 &nearr;</a>
+                  <span class="spec-k">SOURCE CODE</span>
+                  <a href="https://github.com/shreyassindhur/CrimeRate-AI" target="_blank" rel="noopener" class="spec-v link-accent">GitHub Repo &nearr;</a>
                 </div>
               </div>
             </div>
@@ -787,12 +788,19 @@
     <section class="section contact-section" id="contact">
       <div class="section-container">
         <div class="contact-card-box">
-          <div class="contact-header-block">
-            <span class="section-kicker">[06 // LET'S CONNECT]</span>
-            <h2 class="contact-headline">Let's build something extraordinary together.</h2>
-            <p class="contact-subtitle">
-              Open for software development roles, 3D design / VFX collaborations, and creative freelance projects.
-            </p>
+          <div class="contact-header-row">
+            <div class="contact-header-block">
+              <span class="section-kicker">[06 // LET'S CONNECT]</span>
+              <h2 class="contact-headline">Let's build something extraordinary together.</h2>
+              <p class="contact-subtitle">
+                Open for software development roles, 3D design / VFX collaborations, and creative freelance projects.
+              </p>
+            </div>
+            <div class="contact-logo-chrome-wrap" title="Sujal Phapale">
+              <div class="metallic-paint-container" id="contact-metallic-logo" data-metallic-paint="true" data-image-src="assets/images/logo-celestial.png" data-color="#ffffff" data-scale="0.95" data-speed="0.85">
+                <canvas class="metallic-paint-canvas"></canvas>
+              </div>
+            </div>
           </div>
 
           <div class="contact-split">
