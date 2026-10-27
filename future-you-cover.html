@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Future-You Contract App — Cover</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0c;
+    --paper: #f5f0e8;
+    --cream: #ede8d8;
+    --accent: #c9443a;
+    --gold: #b8860b;
+    --muted: #6b6458;
+    --light: #fbf9f4;
+    --border: #d4cfc2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 56px 72px;
+  }
+
+  /* Grain texture overlay */
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Subtle border frame */
+  .frame-border {
+    position: absolute;
+    inset: 18px;
+    border: 1px solid rgba(15, 14, 12, 0.12);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  /* Top Right Radial Glow */
+  .glow-orb {
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 650px;
+    height: 650px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201, 68, 58, 0.13) 0%, rgba(201, 68, 58, 0.03) 50%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Main Two-Column Split */
+  .cover-body {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: center;
+    flex: 1;
+  }
+
+  .cover-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cover-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .cover-tag::before {
+    content: '';
+    width: 44px;
+    height: 1.5px;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 6vw, 76px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+
+  .cover-title em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 900;
+  }
+
+  .cover-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 540px;
+    margin-top: 18px;
+    line-height: 1.55;
+  }
+
+  /* Right Column: Physical Contract Card Mockup */
+  .cover-right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contract-card {
+    width: 380px;
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    box-shadow: 0 16px 40px rgba(15, 14, 12, 0.1), 0 4px 12px rgba(15, 14, 12, 0.05);
+    padding: 28px 26px;
+    position: relative;
+    transform: rotate(2.5deg);
+    transition: transform 0.3s ease;
+  }
+
+  .card-top-rule {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+
+  .contract-id {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .contract-status-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(201, 68, 58, 0.1);
+    border: 1px solid rgba(201, 68, 58, 0.3);
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  .contract-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .contract-meta-grid {
+    background: var(--cream);
+    padding: 12px 14px;
+    border-radius: 3px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .card-meta-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .card-meta-k {
+    font-family: 'DM Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .card-meta-v {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .contract-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px dashed var(--border);
+    padding-top: 12px;
+  }
+
+  .signature-box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sig-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .sig-drawn {
+    font-family: 'Caveat', cursive;
+    font-size: 26px;
+    color: var(--accent);
+    line-height: 1;
+    margin-top: 2px;
+  }
+
+  /* Verified Stamp Overlay */
+  .stamp-badge {
+    position: absolute;
+    top: -24px;
+    right: -20px;
+    width: 90px;
+    height: 90px;
+    border: 2px dashed rgba(201, 68, 58, 0.55);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: rotate(-15deg);
+    background: rgba(245, 240, 232, 0.95);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .stamp-badge .st-1 {
+    font-family: 'DM Mono', monospace;
+    font-size: 7.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .stamp-badge .st-2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    font-style: italic;
+    line-height: 1;
+  }
+
+  .stamp-badge .st-3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 7px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Bottom Metadata Strip */
+  .cover-meta {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 48px;
+    border-top: 1px solid rgba(15, 14, 12, 0.14);
+    padding-top: 20px;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .meta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .meta-value {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  /* Watermark Number */
+  .cover-number {
+    position: absolute;
+    bottom: -15px;
+    right: 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 240px;
+    font-weight: 900;
+    color: rgba(15, 14, 12, 0.04);
+    line-height: 0.85;
+    pointer-events: none;
+    z-index: 1;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+  <div class="frame-border"></div>
+  <div class="glow-orb"></div>
+  <div class="cover-number">01</div>
+
+  <div class="cover-body">
+    <!-- Left Column: Editorial Headline -->
+    <div class="cover-left">
+      <div class="cover-tag">Project Plan · Version 1.0</div>
+      <h1 class="cover-title">Future‑<em>You</em><br>Contract<br>App</h1>
+      <p class="cover-subtitle">A self-accountability platform that turns promises into binding contracts with smart situational reminders.</p>
+    </div>
+
+    <!-- Right Column: Interactive Contract Card Mockup -->
+    <div class="cover-right">
+      <div class="contract-card">
+        <div class="stamp-badge">
+          <span class="st-1">VERIFIED</span>
+          <span class="st-2">Binding</span>
+          <span class="st-3">CONTRACT</span>
+        </div>
+
+        <div class="card-top-rule">
+          <span class="contract-id">CONTRACT // #00249</span>
+          <span class="contract-status-pill">ACTIVE</span>
+        </div>
+
+        <p class="contract-quote">
+          "I promise my future self: zero distractions or streaming until the study block is done. When temptation hits, show me this contract."
+        </p>
+
+        <div class="contract-meta-grid">
+          <div class="card-meta-col">
+            <span class="card-meta-k">TRIGGER</span>
+            <span class="card-meta-v">Exam Week &bull; 21:00</span>
+          </div>
+          <div class="card-meta-col">
+            <span class="card-meta-k">LOCATION</span>
+            <span class="card-meta-v">Campus Library</span>
+          </div>
+        </div>
+
+        <div class="contract-footer">
+          <div class="signature-box">
+            <span class="sig-label">AUTHORIZED SIGNATURE</span>
+            <span class="sig-drawn">Sujal Phapale</span>
+          </div>
+          <span class="contract-id" style="font-size: 9px;">OCT 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Metadata Strip -->
+  <div class="cover-meta">
+    <div class="meta-item">
+      <span class="meta-label">Type</span>
+      <span class="meta-value">Next.js Web App / PWA</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Database</span>
+      <span class="meta-value">Supabase PostgreSQL</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Delivery</span>
+      <span class="meta-value">Web Push API</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Deployment</span>
+      <span class="meta-value">Live on Vercel</span>
+    </div>
+  </div>
+</body>
+</html>

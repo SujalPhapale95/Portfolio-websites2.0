@@ -1326,14 +1326,14 @@
   const caseStudiesData = {
     'future-you': {
       id: '01',
-      title: 'Future-You: Goal & Future Self Platform',
+      title: 'Future-You: Self-Accountability Contract Platform',
       badge: 'CASE STUDY // 01',
-      category: 'NEXT.JS • TYPESCRIPT • SUPABASE',
-      summary: 'A high-leverage goal-setting and personal trajectory application designed to bridge the psychological gap between the present self and future ambitions through automated Web Push nudges and reactive analytics.',
+      category: 'NEXT.JS • SUPABASE • WEB PUSH API',
+      summary: 'A self-accountability web app and PWA designed to turn promises into binding commitments. Users write contracts to their future self that trigger situational notifications when moments of friction or temptation arrive.',
       media: {
         type: 'image',
-        src: 'assets/images/project-webapp.jpg',
-        alt: 'Future-You Application Interface'
+        src: 'assets/images/project-future-you.png',
+        alt: 'Future-You Contract App Design'
       },
       liveUrl: 'https://future-you-virid.vercel.app',
       githubUrl: 'https://github.com/SujalPhapale95/Future-You',
