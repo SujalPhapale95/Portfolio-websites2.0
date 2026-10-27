@@ -250,7 +250,7 @@
     let prevMouseX = 0, prevMouseY = 0;
 
     let renderMode = 'wireframe'; // 'wireframe' | 'solid' | 'points'
-    let currentShape = 'icosahedron'; // 'icosahedron' | 'torus'
+    let currentShape = 'torus'; // 'torus' | 'icosahedron'
 
     const icosa = createIcosahedron(105);
     const torus = createTorusKnot(2, 3, 68, 24, 60, 6, 9);
@@ -342,12 +342,12 @@
 
     if (shapeBtn) {
       shapeBtn.addEventListener('click', function () {
-        if (currentShape === 'icosahedron') {
-          currentShape = 'torus';
-          shapeBtn.textContent = 'SHAPE: TORUS KNOT';
-        } else {
+        if (currentShape === 'torus') {
           currentShape = 'icosahedron';
           shapeBtn.textContent = 'SHAPE: ICOSAHEDRON';
+        } else {
+          currentShape = 'torus';
+          shapeBtn.textContent = 'SHAPE: TORUS KNOT';
         }
       });
     }
