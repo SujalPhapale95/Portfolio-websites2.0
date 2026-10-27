@@ -256,15 +256,24 @@
     const torus = createTorusKnot(2, 3, 68, 24, 60, 6, 9);
 
     function resizeHero() {
+      if (!heroCanvas || !heroCanvas.parentElement) return;
       const rect = heroCanvas.parentElement.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       width = rect.width;
       height = rect.height;
-      heroCanvas.width = Math.floor(width * dpr);
-      heroCanvas.height = Math.floor(height * dpr);
+      const targetW = Math.floor(width * dpr);
+      const targetH = Math.floor(height * dpr);
+      if (heroCanvas.width !== targetW || heroCanvas.height !== targetH) {
+        heroCanvas.width = targetW;
+        heroCanvas.height = targetH;
+      }
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
     window.addEventListener('resize', resizeHero, { passive: true });
+    if (window.ResizeObserver && heroCanvas.parentElement) {
+      new ResizeObserver(resizeHero).observe(heroCanvas.parentElement);
+    }
     resizeHero();
 
     // Mouse Controls
@@ -371,6 +380,13 @@
         if (fpsCounter) fpsCounter.textContent = currentFps + '.0 FPS';
         frameCount = 0;
         lastTime = now;
+      }
+
+      if (heroCanvas.parentElement) {
+        const curRect = heroCanvas.parentElement.getBoundingClientRect();
+        if (Math.abs(curRect.width - width) > 1 || Math.abs(curRect.height - height) > 1) {
+          resizeHero();
+        }
       }
 
       ctx.clearRect(0, 0, width, height);
@@ -723,15 +739,24 @@
     const hudPoly = document.getElementById('lab-hud-poly');
 
     function resizeLab() {
+      if (!labCanvas || !labCanvas.parentElement) return;
       const rect = labCanvas.parentElement.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       width = rect.width;
       height = rect.height;
-      labCanvas.width = Math.floor(width * dpr);
-      labCanvas.height = Math.floor(height * dpr);
+      const targetW = Math.floor(width * dpr);
+      const targetH = Math.floor(height * dpr);
+      if (labCanvas.width !== targetW || labCanvas.height !== targetH) {
+        labCanvas.width = targetW;
+        labCanvas.height = targetH;
+      }
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
     window.addEventListener('resize', resizeLab, { passive: true });
+    if (window.ResizeObserver && labCanvas.parentElement) {
+      new ResizeObserver(resizeLab).observe(labCanvas.parentElement);
+    }
     resizeLab();
 
     // Lab Controls binding
@@ -795,6 +820,12 @@
         return;
       }
       labLoopRunning = true;
+      if (labCanvas.parentElement) {
+        const curRect = labCanvas.parentElement.getBoundingClientRect();
+        if (Math.abs(curRect.width - width) > 1 || Math.abs(curRect.height - height) > 1) {
+          resizeLab();
+        }
+      }
       ctx.clearRect(0, 0, width, height);
 
       labRotX += 0.008 * labSpeed;
@@ -1777,4 +1808,14 @@
 
   // Attach micro sounds to all interactive elements
   attachMicroSounds();
+
+  // Force geometry synchronisation after fonts & stylesheets finish rendering
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () {
+      window.dispatchEvent(new Event('resize'));
+    });
+  }
+  window.addEventListener('load', function () {
+    window.dispatchEvent(new Event('resize'));
+  });
 })();

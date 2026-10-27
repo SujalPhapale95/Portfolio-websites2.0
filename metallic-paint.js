@@ -467,7 +467,7 @@ void main() {
       rotation: userOptions.rotation ?? 0,
       mouseTilt: clamp(userOptions.mouseTilt ?? 0.8, 0, 1.5),
       lightMode: Boolean(userOptions.lightMode),
-      intro: userOptions.intro !== false,
+      intro: userOptions.intro === true,
       paused: Boolean(userOptions.paused),
       dpr: userOptions.dpr
     };
@@ -522,11 +522,11 @@ void main() {
       visible: true,
       pending: false,
       hasImage: false,
-      imageAspect: 1,
+      imageAspect: 1024 / 875,
       width: 0,
       height: 0,
       revealStart: -1,
-      reveal: settings.intro && !reduceMotion ? 0 : 1,
+      reveal: 1,
       tiltX: 0,
       tiltY: 0,
       velocityX: 0,
