@@ -36,8 +36,13 @@
   <header class="masthead" id="masthead">
     <div class="masthead-inner">
       <div class="masthead-brand">
-        <a href="#hero" class="brand-link">
-          <span class="brand-monogram">SP</span>
+        <a href="#hero" class="brand-link" aria-label="Sujal Phapale - Creative Developer & 3D Artist">
+          <div class="brand-logo-wrap" title="Sujal Phapale - Celestial 3D Emblem">
+            <div class="metallic-paint-container" id="brand-metallic-logo" data-metallic-paint="true" data-image-src="assets/images/logo-celestial.png" data-color="#ffffff" data-scale="0.88" data-speed="0.85">
+              <canvas class="metallic-paint-canvas"></canvas>
+            </div>
+            <span class="brand-monogram">SP</span>
+          </div>
           <div class="brand-text-col">
             <span class="brand-name">SUJAL PHAPALE</span>
             <span class="brand-tag">// DEV &bull; 3D ARTIST</span>
@@ -958,6 +963,7 @@
     <span class="toast-msg">Email copied to clipboard!</span>
   </div>
 
+  <script src="metallic-paint.js?v=1.0"></script>
   <script src="script.js?v=2.4"></script>
 </body>
 </html>
